@@ -1,0 +1,317 @@
+================================================================================
+                    MAYURI LANDMARKS - PAGE & COMPONENT SPECIFICATIONS
+================================================================================
+
+File Name: PageInfo.txt
+Target Components: 
+1. Client Stories Section (Testimonials)
+2. Services Section & Service Details Page (/service/:id)
+Location: components/testimonials/Testimonials.tsx & components/services/Services.tsx
+Website Route: / (Landing Page Sections: #section-testimonials, #section-services)
+Design Theme: Luxury Editorial Minimalist Real Estate (Aman / Kinfolk / AD Inspired)
+
+================================================================================
+1. DESIGN THEME, COLOR SYSTEM & TYPOGRAPHY ARCHITECTURE
+================================================================================
+
+1.1 COLOR PALETTE TOKENS
+------------------------
+• Background (Light Mode): #F5F5F0 (Warm architectural stone / off-white paper texture)
+• Background (Dark Mode): #080808 / #0F0F0F (Deep obsidian / luxury dark background)
+• Primary Accent Color: #6CAFBF (Mayuri Brand Soft Cyan Teal)
+• Accent Glow & Highlights: #D4AF37 / #EAB308 (Warm gold accents for ratings & highlights)
+• Primary Text (Light Mode): #000000 / rgba(0,0,0,0.85)
+• Primary Text (Dark Mode): #FFFFFF / rgba(255,255,255,0.85)
+• Subtitle & Muted Text: rgba(0,0,0,0.70) [Light] / rgba(255,255,255,0.70) [Dark]
+• Borders & Dividers: border-black/10 [Light] / border-white/10 [Dark]
+• Blueprint Grid Overlay: rgba(108, 175, 191, 0.06) 80px x 80px grid pattern
+
+1.2 TYPOGRAPHY HIERARCHY
+------------------------
+• Display & Headings: Magtis (`font-[magtis]`)
+  - Section Title ("WHAT THEY SAY ABOUT US" / "OUR SERVICES"): clamp(2.8rem, 7vw, 5.5vw), uppercase, leading-[0.9], tracking-tighter
+  - Headline Quotes: clamp(1.5rem, 3vw, 2.5rem), uppercase, leading-[1.15]
+  - Service Card Stack Title: text-[7vh] md:text-[9vh], uppercase, leading-[0.9], tracking-tight
+  - Service Row Title: text-[4vh] md:text-[5.5vh], uppercase, leading-[1], tracking-tight
+  - Homeowner Signature Name: 1.5rem (24px) md:1.75rem (28px), uppercase, tracking-wider
+• Body & Narrative Text: Plus Jakarta Sans / System Sans
+  - Subtitle: 1rem (16px) md:1.125rem (18px), font-light, leading-relaxed
+  - Story Paragraphs & Service Desc: 1rem (16px) md:1.125rem (18px), font-light (weight: 300), leading-[1.7]
+• Overlines, Badges & Micro-Copy:
+  - Verified Badges & Overlines: 0.6875rem (11px) / 0.75rem (12px), font-bold, uppercase, tracking-[0.25em]
+  - Property Metadata Labels: 0.5625rem (9px) / 0.625rem (10px), font-bold, uppercase, tracking-widest
+
+================================================================================
+2. CLIENT STORIES SECTION SPECIFICATIONS (TESTIMONIALS)
+================================================================================
+
+2.1 TICKER MARQUEE BAND (TOP HEADER BAND)
+------------------------------------------
+• Container Width: 100% full viewport width (w-full)
+• Container Height: Auto (padding py-4 / ~52px total height)
+• Border: Bottom border 1px (border-b border-black/8 dark:border-white/8)
+• Background: bg-black/[0.02] dark:bg-white/[0.02]
+• Animation: GSAP infinite scroll (xPercent: -50, duration: 38s, ease: none)
+• Typography: Text size 12px (text-xs), font-bold, uppercase, tracking-[0.3em], color #6CAFBF
+
+2.2 EDITORIAL SECTION HEADER & COUNTER AREA
+------------------------------------------
+• Padding: px-4 md:px-[6vw], top pt-[12vh], bottom pb-[6vh]
+• Grid Layout: Flex direction column (mobile) -> row (desktop lg:flex-row lg:items-end justify-between)
+• Header Title Box: max-w-3xl
+  - Verified Badge Pill: px-3.5 py-1, rounded-full, bg-[#6CAFBF]/10, text-[#6CAFBF], border 1px border-[#6CAFBF]/30
+  - Line-Masked Title Spans: overflow-hidden py-1, font-[magtis] uppercase font-extrabold text-[10vw] sm:text-[7vw] lg:text-[5.5vw]
+• Counter & Slide Controls Box:
+  - Counter Numbers: font-[magtis] font-extrabold text-5xl lg:text-7xl, active story text-black dark:text-white, total count text-black/15 dark:text-white/15
+  - Navigation Buttons: 2x circular buttons, width 52px (w-13), height 52px (h-13), rounded-full, border 1px border-black/15 dark:border-white/15, hover:bg-[#6CAFBF] hover:border-[#6CAFBF] hover:text-white
+• Progress Bar: Width 100% (w-full), height 2px (h-[2px]), bg-black/10 dark:bg-white/10, inner indicator width dynamic based on activeIndex / totalStories * 100%
+
+2.3 MAIN CONTENT DUAL-PANEL GRID
+---------------------------------
+• Layout: 12-Column Grid (grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12)
+• Total Padding: px-4 md:px-[6vw] pb-[12vh]
+
+2.4 LEFT PANEL — CLIENT STORY CARD
+-----------------------------------
+• Grid Width: 7 Columns (lg:col-span-7)
+• Padding: p-8 md:p-12
+• Corner Radius: rounded-3xl (24px)
+• Glassmorphic Background: bg-white/70 dark:bg-[#121212]/70 backdrop-blur-2xl
+• Border: 1px border-black/5 dark:border-white/10
+• Shadow: shadow-2xl with background blur
+• Components inside Left Panel:
+  a) Header Badges & Rating Row:
+     - Verified Homeowner Pill: px-3 py-1, rounded-full, text-[11px] font-bold uppercase tracking-wider, bg-[#6CAFBF]/10 text-[#6CAFBF]
+     - Rating Stars: 5x Lucide Star icons, 16px x 16px (w-4 h-4), fill #6CAFBF
+  b) Quote & Narrative Body:
+     - Quote Icon: Lucide Quote, 48px x 48px (w-12 h-12), text-[#6CAFBF]/30
+     - Headline Quote: text-2xl sm:text-3xl md:text-4xl, font-[magtis] uppercase font-extrabold, leading-[1.15]
+     - Story Paragraphs: 2x paragraphs, text-base md:text-lg, font-light, leading-relaxed, text-black/80 dark:text-white/80
+  c) Favorite Corner & Memory Box:
+     - Padding: p-5
+     - Radius: rounded-2xl (16px)
+     - Background: bg-black/[0.03] dark:bg-white/[0.03] border 1px border-black/5 dark:border-white/5
+     - Layout: 2-column grid (grid-cols-1 sm:grid-cols-2 gap-4)
+  d) Handwritten Signature Section:
+     - Border Top: 1px border-black/10 dark:border-white/10, pt-6
+     - Signature Name: font-[magtis] text-xl md:text-2xl font-bold uppercase tracking-wider
+     - Signature Subtitle: text-xs text-[#6CAFBF] font-semibold tracking-widest uppercase
+  e) Real Estate Micro Metadata Bar:
+     - Layout: 4-column grid (grid-cols-2 sm:grid-cols-4 gap-4)
+     - Border Top: 1px border-black/5 dark:border-white/5, pt-6
+     - Items: Purchased Project, Location, Possession Date, Recommendation Rate (with monochrome Lucide icons 16px x 16px)
+
+2.5 RIGHT PANEL — LIFESTYLE MEDIA EXPERIENCE & STACK
+----------------------------------------------------
+• Grid Width: 5 Columns (lg:col-span-5)
+• Layout: Vertical Stack (flex flex-col gap-6)
+• Hero Media Container:
+  - Width: 100% (w-full)
+  - Aspect Ratio: aspect-[4/5] (~400px x 500px on desktop)
+  - Corner Radius: rounded-3xl (24px)
+  - Background: bg-neutral-900, overflow-hidden
+  - Hover Interaction: Image scale 1.08 (scale-108), transition duration 1.8s cubic-bezier(0.16, 1, 0.3, 1)
+• Video Play Button Overlay (when video available):
+  - Size: 80px x 80px (w-20 h-20), rounded-full
+  - Material: bg-white/25 backdrop-blur-xl border border-white/40
+  - Pulse Ring: absolute inset-0 rounded-full bg-[#6CAFBF]/30 animate-ping
+  - Hover: scale-110 bg-[#6CAFBF]
+• Gallery Thumbnail Tabs Strip:
+  - Layout: 4-column grid (grid-cols-4 gap-3)
+  - Thumbnail Cards: aspect-[4/3] (~90px x 67px), rounded-xl, overflow-hidden, border 1px
+  - Active Tab State: border-[#6CAFBF] ring-2 ring-[#6CAFBF]/50 scale-[1.03]
+
+2.6 SOCIAL PROOF THUMBNAIL NAVIGATION STRIP
+--------------------------------------------
+• Padding: px-4 md:px-[6vw] pb-[10vh]
+• Grid Layout: grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4
+• Thumbnail Button Item:
+  - Padding: p-4
+  - Radius: rounded-2xl (16px)
+  - Active State: bg-[#6CAFBF] text-white border-[#6CAFBF] shadow-xl scale-[1.03]
+  - Inactive State: bg-white/50 dark:bg-[#121212]/50 border-black/10 dark:border-white/10 hover:border-[#6CAFBF]/50
+  - Avatar inside button: 44px x 44px (w-11 h-11), rounded-full, object-cover
+
+2.7 EMOTIONAL CALL TO ACTION (FOOTER CTA)
+------------------------------------------
+• Padding: px-4 md:px-[6vw] pb-[14vh]
+• Card Container:
+  - Width: 100% (w-full)
+  - Padding: p-8 md:p-14
+  - Radius: rounded-3xl (24px)
+  - Background: bg-gradient-to-r from-black via-[#111111] to-black text-white
+  - Border: 1px border-white/10
+  - Shadow: shadow-2xl
+• Action Button ("Book Personal Walkthrough"):
+  - Padding: px-8 py-4
+  - Radius: rounded-full
+  - Background: bg-[#6CAFBF] hover:bg-white text-black
+  - Font: font-bold text-xs uppercase tracking-[0.2em]
+
+================================================================================
+3. CLIENT STORIES DATA & MEDIA INVENTORY
+================================================================================
+
+3.1 HOMEOWNER STORIES INVENTORY (5 FEATURED FAMILIES)
+------------------------------------------------------
+1. Rahul & Priya Deshmukh:
+   - Project: Mayuri Infinity | Configuration: 3.5 BHK Sky Residence | Possession: Nov 2023 | Location: Baner-Pashan Link Rd
+   - Headline: "The first morning we opened the balcony doors, we knew this was home."
+   - Favorite Corner: Sunrise Breakfast Balcony | Best Memory: Diwali dinner on private deck
+   - Avatar: https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop
+   - Hero Media: https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1200&auto=format&fit=crop
+
+2. Meera & Dr. Vikram Kulkarni:
+   - Project: Mayuri Optimum | Configuration: Luxury 3 BHK Penthouse | Possession: Aug 2022 | Location: Wakad Central
+   - Headline: "After long hospital shifts, entering this calm space restores my energy."
+   - Favorite Corner: Master Zen Suite | Best Memory: Sunday morning coffee with hill vistas
+   - Avatar: https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop
+   - Hero Media: https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1200&auto=format&fit=crop
+
+3. Suresh & Sunita Patil:
+   - Project: Mayuri Residency | Configuration: 2.5 BHK Garden Home | Possession: Dec 2021 | Location: Kothrud Green Zone
+   - Headline: "I have lived in five cities. This is the first place that truly feels permanent."
+   - Favorite Corner: Private Courtyard Patio | Best Memory: Grandson learning to ride a bicycle in green zone
+   - Avatar: https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&auto=format&fit=crop
+   - Hero Media: https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1200&auto=format&fit=crop
+
+4. Anjali & Rohan Desai:
+   - Project: Mayuri Infinity II | Configuration: 4 BHK Duplex Estate | Possession: Jan 2024 | Location: Baner Hills View
+   - Headline: "Investing here was the best decision we made for our family’s future."
+   - Favorite Corner: Duplex Work Sanctuary | Best Memory: New Year sunset party with panoramic views
+   - Avatar: https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&auto=format&fit=crop
+   - Hero Media: https://images.unsplash.com/photo-1600607687644-c7171b42498f?q=80&w=1200&auto=format&fit=crop
+
+5. Vikram & Sunita Joshi:
+   - Project: Mayuri Elite | Configuration: Bespoke Luxury Villa | Possession: Mar 2024 | Location: Bavdhan Valley
+   - Headline: "The level of bespoke craftsmanship simply has no parallel in Pune."
+   - Favorite Corner: Private Courtyard Pool | Best Memory: Family anniversary dinner surrounded by water reflections
+   - Avatar: https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=400&auto=format&fit=crop
+   - Hero Media: https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1200&auto=format&fit=crop
+
+================================================================================
+4. SERVICES SECTION & SERVICE DETAILS SPECIFICATIONS
+================================================================================
+
+File Locations:
+• Homepage Section: components/services/Services.tsx & src/components/services/Services.jsx
+• Dynamic Service Page: app/service/[id]/page.tsx, components/services/ServiceDetails.tsx & src/components/services/ServiceDetails.jsx
+• Data Source: lib/servicesData.ts
+Website Routes: / (Section: #section-services) & /service/:id (Dynamic Service Route)
+Design Theme: Luxury Architectural Services Showcase (Aman Resorts / Foster + Partners / Porsche Design Inspired)
+
+--------------------------------------------------------------------------------
+4.1 SERVICES DESIGN THEME, COLOR SYSTEM & TYPOGRAPHY ARCHITECTURE
+--------------------------------------------------------------------------------
+• Background (Light Mode): #F5F5F0 (Warm architectural stone)
+• Background (Dark Mode): #0F0F0F / #080808 (Obsidian dark theme)
+• Brand Accent Color: #6CAFBF (Soft Cyan Teal)
+• Text Primary: #000000 / #FFFFFF
+• Text Secondary: rgba(0,0,0,0.70) / rgba(255,255,255,0.70)
+• Dividers: border-black/10 [Light] / border-white/10 [Dark]
+• Typography Tokens:
+  - Display Font: Magtis (`font-[magtis]`)
+    • Header Title ("OUR SERVICES"): text-[13vw] md:text-[10vw], font-extrabold, uppercase, leading-[0.9], tracking-tighter
+    • Card Stack Title: text-[7vh] md:text-[9vh], font-extrabold, uppercase, leading-[0.9], tracking-tight
+    • Service Row Title: text-[4vh] md:text-[5.5vh], font-extrabold, uppercase, leading-[1], tracking-tight
+    • Service Numbering ("01", "02", "03", "04"): font-[magtis] font-bold, tracking-widest
+  - Body Font: Plus Jakarta Sans / System Sans
+    • Lead Paragraph: text-base md:text-lg, font-medium, leading-relaxed
+    • Card Description: text-base md:text-xl, font-medium, leading-relaxed, text-white/70
+
+--------------------------------------------------------------------------------
+4.2 HOMEPAGE SERVICES COMPONENT STRUCTURE & DIMENSIONS (Services.tsx)
+--------------------------------------------------------------------------------
+a) Top Lead-In Header Area:
+   • Width: 100% full width (w-full)
+   • Padding: pt-[10vh] pb-[10vh] px-4 md:px-[6vw]
+   • Overline Tag: "What We Offer", text-xs md:text-sm, font-bold, uppercase, tracking-[0.25em], text-[#6CAFBF]
+   • Headline Title Box: perspective 1000px, 3D line-by-line GSAP reveal (rotateX: -25deg -> 0deg, duration: 1.3s)
+   • Summary Box: w-full md:w-[28%], text-base md:text-lg, font-medium, leading-relaxed, text-black/70
+
+b) 3D Stacked Viewport Hero Slider:
+   • Container Dimensions: Width 100% (w-full), Height 100vh (h-screen), overflow-hidden, position relative
+   • Individual Service Card:
+     - Width: 100% (w-full), Height: 100% (h-full), position absolute inset-0
+     - Background Media Image: 100% width and height, object-cover
+     - Gradient Overlay: bg-gradient-to-r from-black/85 via-black/50 to-black/10
+     - Stack Transform Physics (GSAP 3D Interpolation):
+       * Active Card (Index = activeIndex): y: 0, x: 0, scale: 1, zIndex: max, brightness: 1
+       * Inactive Stack Cards: y: stackOffset * 14px, x: stackOffset * 8px, scale: 1 - |stackOffset| * 0.03, brightness: 0.6 - |stackOffset| * 0.1
+       * Transition: duration 0.9s, ease power4.inOut
+   • Content Layout inside Stack Card:
+     - Padding: p-8 md:p-[6vh] md:px-[6vw], flex flex-col justify-between h-full
+     - Top Bar: Service Number ("01", "02", "03", "04") in Magtis, right side "Mayuri Landmarks LLP" watermark badge
+     - Main Text Block: max-w-2xl, subtitle tracking-[0.25em] text-[#6CAFBF], title text-[7vh] md:text-[9vh], teal accent bar w-16 h-[2px] bg-[#6CAFBF], description max-w-lg text-white/70
+     - Bottom Controls Row:
+       * Indicator Dots: Active w-8 h-2 bg-[#6CAFBF] rounded-full vs Inactive w-2 h-2 bg-white/30 rounded-full
+       * Circular Prev/Next Arrow Buttons: 48px x 48px (w-12 h-12), rounded-full, border border-white/20, hover:border-[#6CAFBF] hover:text-[#6CAFBF]
+   • Right-Side Quick Vertical Nav Bar:
+     - Position: absolute right-6 md:right-10 top-1/2 -translate-y-1/2, zIndex 50
+     - Indicator Line: active w-8 bg-[#6CAFBF] vs inactive w-3 bg-white
+     - Hover Preview Title: hidden on mobile, font-[magtis] text-xs tracking-widest text-white
+
+c) All Services Accordion & Navigation List Table:
+   • Padding: pt-[15vh] pb-[20vh] px-4 md:px-[6vw]
+   • Table Title: "All Services", text-xs md:text-sm, font-bold, uppercase, tracking-[0.25em], text-[#6CAFBF], mb-[6vh]
+   • Interactive Row Item:
+     - Layout: flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-12 border-t border-black/10 py-8 md:py-12 group cursor-pointer
+     - Number Badge: font-[magtis] text-sm md:text-base font-bold text-black/30 group-hover:text-[#6CAFBF] transition-colors
+     - Title: font-[magtis] uppercase font-extrabold text-[4vh] md:text-[5.5vh] leading-none tracking-tight group-hover:translate-x-4 transition-transform duration-500
+     - Subtitle Badge: px-4 py-2 rounded-full border border-black/15 text-xs font-semibold uppercase tracking-[0.2em] text-black/40 group-hover:border-[#6CAFBF] group-hover:text-[#6CAFBF]
+     - Snippet Text: w-full md:w-[35%] text-black/60 text-sm md:text-base font-medium
+     - Link Arrow: Lucide ArrowRight -rotate-45 group-hover:translate-x-2 group-hover:text-[#6CAFBF] transition-all
+
+--------------------------------------------------------------------------------
+4.3 DYNAMIC SERVICE DETAILS PAGE SPECIFICATIONS (/service/:id)
+--------------------------------------------------------------------------------
+• Route Architecture: /service/[id] (app/service/[id]/page.tsx & components/services/ServiceDetails.tsx)
+• Hero Header Banner:
+  - Height: min-h-[50vh] md:min-h-[60vh]
+  - Background Image: High-resolution service photography with linear dark gradient overlay (from-black/90 via-black/60 to-black/30)
+  - Layout: max-w-7xl mx-auto px-4 md:px-[6vw]
+  - Watermark Number: font-[magtis] text-[15vw] md:text-[12vw] text-white/10 absolute right-6 bottom-0 pointer-events-none
+  - Title: font-[magtis] text-4xl sm:text-6xl lg:text-7xl uppercase font-extrabold text-white tracking-tight
+  - Category Badge: px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-[0.25em] bg-[#6CAFBF] text-black
+• Capability & Scope Grid:
+  - Layout: grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6
+  - Card Design: rounded-2xl bg-white/60 dark:bg-[#121212]/60 border border-black/5 dark:border-white/10 p-8 backdrop-blur-xl
+• Execution Process Timeline (4 Stages):
+  - 1. Consultation & Assessment: Site inspection, requirements analysis, structural audit
+  - 2. Design & Material Selection: 3D modeling, material sampling, cost estimation
+  - 3. Precision Execution: Dedicated project manager, skilled labor, milestone tracking
+  - 4. Quality Inspection & Handover: Snagging audit, deep cleaning, 100% satisfaction handover
+• Service Inquire CTA Banner:
+  - Padding: p-8 md:p-12, rounded-3xl bg-gradient-to-r from-black via-[#111111] to-black text-white
+  - Primary Action Button: "Inquire About This Service" / "Schedule a Consultation"
+
+--------------------------------------------------------------------------------
+4.4 SERVICES DATA & MEDIA INVENTORY
+--------------------------------------------------------------------------------
+1. Service 01 — Tiling & Painting (Surface Excellence)
+   - Image: https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1800&auto=format&fit=crop
+   - Focus: Tile installation, wall finishes, moisture protection, luxury stone texture
+2. Service 02 — Renovations (Reinvented Spaces)
+   - Image: https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=1800&auto=format&fit=crop
+   - Focus: Structural remodeling, interior space optimization, electrical & plumbing upgrades
+3. Service 03 — Design & Build (Vision to Reality)
+   - Image: https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1800&auto=format&fit=crop
+   - Focus: Turnkey architectural design, construction execution, unified project delivery
+4. Service 04 — Consulting (Expert Guidance)
+   - Image: https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1800&auto=format&fit=crop
+   - Focus: Real estate investment advisory, floor plan optimization, feasibility studies
+
+================================================================================
+5. ANIMATION CHOREOGRAPHY & PERFORMANCE STANDARDS
+================================================================================
+
+5.1 ANIMATION SEQUENCE & METRICS
+---------------------------------
+• GSAP 3D Stack Physics: Layered zIndex, 3D scale, y-offset, and brightness filters smoothly interpolated at 60 FPS
+• Viewport Trigger: GSAP ScrollTrigger activates when headline enters top 80% of screen
+• GPU Acceleration: `will-change: transform, filter` applied to active & standby stacked cards
+• Touch & Mobile Responsiveness: Touch gestures enabled for card swiping, fallback vertical list layout on small viewports
+
+================================================================================
+                              END OF PAGEINFO.TXT
+================================================================================

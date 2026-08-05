@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: var(--font-playfair), "Playfair Display", Georgia, serif;
+  --font-sans: var(--font-jakarta), "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --color-brand-blue: #8BC7D8;
+  --color-brand-bg: #F5F5F3;
+  --color-brand-dark: #111111;
+}
+
+/* Enable class-based manual dark mode toggling */
+@custom-variant dark (&:where(.dark, .dark *));
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 12vh;
+  overscroll-behavior-y: none;
+}
+
+/* Prevent scroll-chaining & hijacking on inner scrollable containers */
+.overflow-y-auto,
+.overflow-auto,
+.overflow-x-auto,
+[data-lenis-prevent] {
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* GPU promotion for hardware accelerated rendering during scroll */
+.will-animate-scroll {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Lenis Smooth Scroll CSS Integration */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@font-face {
+  font-family: Magtis;
+  src: url(/Fonts/Magtis.otf) format("opentype");
+  font-display: swap;
+}

@@ -1,0 +1,314 @@
+================================================================================
+                    MAYURI LANDMARKS - PROJECT OVERVIEW
+================================================================================
+
+Target File: Overview.txt
+Project Name: Mayuri Landmarks (Real Estate Web Application)
+Version: 1.0.0
+Author/Maintainer: Mayuri Development Team
+
+--------------------------------------------------------------------------------
+TABLE OF CONTENTS
+--------------------------------------------------------------------------------
+1. EXECUTIVE SUMMARY & NON-TECHNICAL OVERVIEW
+   1.1. What is Mayuri Landmarks?
+   1.2. Business Goals & Objectives
+   1.3. Target Audience
+   1.4. Key Value Propositions
+2. CORE FEATURES & USER EXPERIENCE
+   2.1. Premium Preloader & Entrance Animation
+   2.2. Interactive 3D Tower Skyline Hero Section
+   2.3. Project Portfolio & Smart Category Filtering
+   2.4. Comprehensive Project Details Page (/project/:id)
+   2.5. Interactive Site Visit Scheduler
+   2.6. "Inside Mayuri Homes" Virtual Interior Gallery (/interiors)
+   2.7. World-Class Amenities Showcase
+   2.8. Real Estate & Interior Design Services (/service/:id)
+   2.9. Brand Credibility (Why Us & Testimonials)
+   2.10. Contact & Lead Capture Engine
+   2.11. Dual Theme System (Dark & Light Mode)
+3. TECHNICAL ARCHITECTURE & SYSTEM DESIGN
+   3.1. SPA Architecture
+   3.2. Route Architecture
+   3.3. Animation & Physics Engine Architecture
+   3.4. Dynamic Asset Import Pipeline
+   3.5. Dark/Light Theme Automation Script
+4. TECHNOLOGY STACK & DEPENDENCY BREAKDOWN
+   4.1. Core Runtime & Frameworks
+   4.2. Styling & Design Tokens
+   4.3. Animation & Interactivity Libraries
+   4.4. Iconography & Routing
+   4.5. Tooling, Linting & Build System
+5. PROJECT FOLDER & DIRECTORY STRUCTURE
+6. DEVELOPMENT & MAINTENANCE GUIDE
+   6.1. System Prerequisites
+   6.2. Installation & Setup
+   6.3. Available CLI Scripts
+   6.4. Custom Theme Script Execution
+
+
+================================================================================
+1. EXECUTIVE SUMMARY & NON-TECHNICAL OVERVIEW
+================================================================================
+
+1.1 WHAT IS MAYURI LANDMARKS?
+-----------------------------
+Mayuri Landmarks is a modern, high-end real estate web application crafted to showcase 
+premium residential townships, commercial hubs, luxury villas, and bespoke interior 
+design services. 
+
+It transforms standard static real estate listings into an immersive, interactive digital 
+experience. Visitors can explore architectural designs, view floor plans, schedule on-site 
+property tours, browse real home interior showcases, and submit inquiries seamlessly.
+
+1.2 BUSINESS GOALS & OBJECTIVES
+-------------------------------
+• Digital Transformation: Establish a top-tier digital presence for Mayuri Landmarks 
+  that reflects luxury, trust, and structural elegance.
+• Lead Generation: Convert casual site visitors into high-intent buyers through integrated 
+  site-visit schedulers, instant inquiry forms, and brochure downloads.
+• Interactive Product Discovery: Allow prospective buyers to visually interact with 
+  building skylines, flat configurations, floor plans, and amenity highlights.
+• Brand Building: Communicate key milestones (300+ units, years of experience, customer 
+  satisfaction) to foster credibility and trust.
+
+1.3 TARGET AUDIENCE
+-------------------
+• Premium Homebuyers: Individuals and families looking for luxury apartments, 
+  townships, and villas.
+• Real Estate Investors: Buyers looking for high-value residential and commercial properties.
+• Commercial Clients: Business owners looking for modern office and retail spaces.
+• Interior Design Seekers: Homeowners seeking end-to-end customized home interior solutions.
+
+1.4 KEY VALUE PROPOSITIONS
+--------------------------
+• 3D Interactive Skyline: Unique layered visual presentation of Mayuri towers on the homepage.
+• Seamless Site Booking: Easy step-by-step form to book personalized physical site tours.
+• Custom Interior Visualizer: High-definition interior gallery with dynamic animation styles.
+• Responsive & Dark/Light Adaptive: Flawless experience across smartphones, tablets, 
+  and desktop monitors with custom light and dark color schemes.
+
+
+================================================================================
+2. CORE FEATURES & USER EXPERIENCE
+================================================================================
+
+2.1 PREMIUM PRELOADER & ENTRANCE ANIMATION (Loader.jsx)
+• Displays an elegant logo preloader screen while initial assets load in the background.
+• Features an animated progress percentage indicator and smooth curtain reveal transition, 
+  setting a sophisticated tone from the moment the user visits the website.
+
+2.2 INTERACTIVE 3D TOWER SKYLINE HERO SECTION (Home.jsx)
+• Layered parallax representation of flagship Mayuri developments (e.g., Mayuri Infinity, 
+  Mayuri Optimum Phase 2, Mayuri Adhinathpuram, Mayuri Elite).
+• Hovering over any tower highlights the building structure, presenting quick metadata 
+  cards with project type, location, unit counts, and a direct button to inspect the project.
+
+2.3 PROJECT PORTFOLIO & SMART CATEGORY FILTERING (Projects.jsx)
+• Categorized catalog of properties allowing users to filter by:
+  - All Projects
+  - Residential Townships
+  - Commercial Hubs
+  - Luxury Villas
+  - Ongoing & Completed status
+• Each project card presents high-res imagery, key specifications, price points, and 
+  navigation to detailed project insights.
+
+2.4 COMPREHENSIVE PROJECT DETAILS PAGE (ProjectDetails.jsx)
+• Route: `/project/:id`
+• Deep dive into individual developments featuring:
+  - Image carousel & gallery
+  - Interactive floor plan viewer (1 BHK, 2 BHK, 3 BHK, Penthouse layouts)
+  - Detailed pricing structure, carpet area metrics, and possession dates
+  - Master plan map & architectural highlight list
+  - Instant Brochure Download modal with lead capture form
+  - Direct integration with the Site Visit Scheduler
+
+2.5 INTERACTIVE SITE VISIT SCHEDULER (ScheduleSiteVisit.jsx)
+• Dedicated booking workflow allowing users to:
+  - Select preferred visit dates from an interactive calendar interface.
+  - Choose convenient time slots (Morning, Afternoon, Evening).
+  - Select optional free pickup & drop transport assistance.
+  - Enter contact information to receive instant booking confirmation.
+
+2.6 "INSIDE MAYURI HOMES" VIRTUAL INTERIOR GALLERY (InsideMayuriHomes.jsx)
+• Route: `/interiors`
+• Showcases real interior projects designed by Mayuri Homes (living rooms, bedrooms, 
+  modular kitchens, custom lighting setups).
+• Built with smooth scroll physics (Lenis) and randomized image entrance animations 
+  (scale-up, slide-left, flip, blur) when switching active gallery items.
+
+2.7 WORLD-CLASS AMENITIES SHOWCASE (Amenities.jsx)
+• Interactive layout spotlighting lifestyle features:
+  - Luxury Clubhouse, Infinity Swimming Pool, Fully Equipped Gym
+  - EV Charging Stations, 24/7 Multi-Tier Security, Landscaped Gardens
+  - Children's Play Zones, Rooftop Lounges, and Jogging Tracks.
+
+2.8 REAL ESTATE & INTERIOR DESIGN SERVICES (Services.jsx & ServiceDetails.jsx)
+• Route: `/service/:id`
+• Details Mayuri's core service offerings:
+  - Property Development & Construction
+  - Joint Venture Collaborations
+  - End-to-End Turnkey Interior Design
+  - Property Management & Maintenance Consulting
+
+2.9 BRAND CREDIBILITY (WhyUs.jsx & Testimonials.jsx)
+• Highlights company history, core values (timely delivery, transparent pricing, quality craftsmanship).
+• Video and quote testimonial cards from real homeowners and satisfied investors.
+
+2.10 CONTACT & LEAD CAPTURE ENGINE (Contact.jsx & Footer.jsx)
+• Inquiry form connected to phone, email, and location data.
+• Google Maps integration for office and site locations.
+• Quick links, legal disclosure (RERA registration), and social media connections.
+
+2.11 DUAL THEME SYSTEM (DARK & LIGHT MODE)
+• Global dark/light theme switching with stored user preference.
+• Custom HSL palette transitions ensuring high legibility and contrast in both modes.
+
+
+================================================================================
+3. TECHNICAL ARCHITECTURE & SYSTEM DESIGN
+================================================================================
+
+3.1 SPA ARCHITECTURE
+The application is built as a Single Page Application (SPA) using React 19 and Vite. 
+All assets and JavaScript bundles are optimized for minimal payload size and rapid 
+Initial Page Load (FCP) and Time to Interactive (TTI).
+
+3.2 ROUTE ARCHITECTURE (react-router-dom v7)
+• `/` - Main single-page scroll layout containing Navbar, Hero, Projects, Amenities, 
+  Testimonials, Why Us, Services, Contact, and Footer.
+• `/project/:id` - Dynamic route displaying deep project specifications based on project ID.
+• `/service/:id` - Dynamic route displaying detailed service info based on service ID.
+• `/interiors` - Dedicated full-page interior design visualizer gallery.
+
+3.3 ANIMATION & PHYSICS ENGINE ARCHITECTURE
+• GSAP (GreenSock Animation Platform) + ScrollTrigger: Drives complex timeline 
+  animations, parallax building movement in the hero section, scroll-based element reveals, 
+  and subtle hover micro-interactions.
+• Lenis Smooth Scroll (@studio-freight/lenis): Intercepts native mouse wheel scroll events 
+  to provide smooth momentum-based scrolling across complex visual pages like `/interiors`.
+• Framer Motion: Powers component-level enter/exit transitions, modal popups, and tab switching.
+
+3.4 DYNAMIC ASSET IMPORT PIPELINE
+The `/interiors` gallery utilizes Vite's native module glob feature:
+`import.meta.glob('../../assets/Flats_Img/*.{jpeg,jpg,png,webp}', { eager: true })`
+This allows newly added images in the directory to automatically populate in the UI 
+without manual import statements in code.
+
+3.5 DARK/LIGHT THEME AUTOMATION SCRIPT (theme-script.cjs)
+A custom Node.js script `theme-script.cjs` processes JSX component templates to systematically 
+inject Tailwind CSS v4 dark mode class variants (`dark:bg-[#080808]`, `dark:text-white`), 
+ensuring seamless theme adaptability across legacy and new UI modules.
+
+
+================================================================================
+4. TECHNOLOGY STACK & DEPENDENCY BREAKDOWN
+================================================================================
+
+4.1 CORE RUNTIME & FRAMEWORKS
+• React (v19.2.0): Modern JavaScript UI library for component-based rendering.
+• React DOM (v19.2.0): Entry renderer for DOM node manipulation.
+• JavaScript (ES6+): Uses modern standard syntax, modules, and async operations.
+
+4.2 STYLING & DESIGN TOKENS
+• Tailwind CSS (v4.0+): Utility-first CSS framework configured via `@import "tailwindcss"` in `src/index.css`.
+• Custom Theme Tokens (@theme):
+  - `--font-serif`: "Playfair Display", Georgia, serif
+  - `--font-sans`: "Plus Jakarta Sans", sans-serif
+  - `--font-custom`: Magtis custom display font (`public/Fonts/Magtis.otf`)
+  - `--color-brand-blue`: `#8BC7D8`
+  - `--color-brand-bg`: `#F5F5F3`
+  - `--color-brand-dark`: `#111111`
+
+4.3 ANIMATION & INTERACTIVITY LIBRARIES
+• GSAP (v3.14.2): Professional grade JavaScript animation engine.
+• Framer Motion (v12.36.0): React motion library for layout animations.
+• @studio-freight/lenis (v1.0.42): Lightweight smooth scroll library.
+
+4.4 ICONOGRAPHY & ROUTING
+• React Router DOM (v7.13.1): Declarative client-side routing.
+• Lucide React (v0.577.0): Clean, customizable SVG icon set.
+
+4.5 TOOLING, LINTING & BUILD SYSTEM
+• Vite (v7.2.4): Next-generation frontend build tool providing instant server start and HMR.
+• @vitejs/plugin-react (v5.1.1): Official React plugin for Vite.
+• ESLint (v9.39.1): Code quality, syntax checking, and React Hooks standard enforcement.
+
+
+================================================================================
+5. PROJECT FOLDER & DIRECTORY STRUCTURE
+================================================================================
+
+Mayuri/
+├── public/                     # Static public assets (served directly)
+│   ├── Fonts/                  # Custom typography files (e.g., Magtis.otf)
+│   ├── assets/                 # Global static media
+│   └── images/                 # Image resources
+├── src/                        # Main application source code
+│   ├── assets/                 # React component asset imports
+│   │   ├── BG_Images/          # Building tower graphics & hero backgrounds
+│   │   └── Flats_Img/          # Interior gallery images
+│   ├── components/             # Reusable UI component modules
+│   │   ├── Amenities/          # Amenities section component (Amenities.jsx)
+│   │   ├── Contact/            # Contact & inquiry form component (Contact.jsx)
+│   │   ├── Footer/             # Main site footer (Footer.jsx)
+│   │   ├── Loader/             # Preloader splash screen (Loader.jsx)
+│   │   ├── Nav/                # Navigation bar & menu overlay (Navbar.jsx, Menu.jsx)
+│   │   ├── home/               # Hero & brochure components (Home.jsx, Broucher.jsx)
+│   │   ├── projects/           # Projects listing, details, interior gallery & visit scheduler
+│   │   │   ├── Projects.jsx
+│   │   │   ├── ProjectDetails.jsx
+│   │   │   ├── InsideMayuriHomes.jsx
+│   │   │   └── ScheduleSiteVisit.jsx
+│   │   ├── services/           # Service highlights & service details (Services.jsx, ServiceDetails.jsx)
+│   │   ├── testimonials/       # Customer testimonials component (Testimonials.jsx)
+│   │   └── why us/             # Brand story & statistics (WhyUs.jsx)
+│   ├── App.jsx                 # App layout configuration & react-router route definitions
+│   ├── App.css                 # Application level styles
+│   ├── index.css               # Tailwind CSS v4 import, theme variables & global fonts
+│   └── main.jsx                # React root entry point
+├── eslint.config.js            # ESLint rules and settings
+├── index.html                  # Main HTML template entry point
+├── package.json                # Project dependencies, scripts & metadata
+├── theme-script.cjs            # Custom theme transformation utility script
+├── vite.config.js              # Vite build setup & plugin configurations
+└── Overview.txt                # Comprehensive project documentation file
+
+
+================================================================================
+6. DEVELOPMENT & MAINTENANCE GUIDE
+================================================================================
+
+6.1 SYSTEM PREREQUISITES
+• Node.js: Recommended version v18.0.0 or higher.
+• npm: Package manager (comes bundled with Node.js).
+
+6.2 INSTALLATION & SETUP
+1. Open terminal/command prompt in the project root directory.
+2. Run `npm install` to install all required dependencies listed in `package.json`.
+
+6.3 AVAILABLE CLI SCRIPTS
+• Start Development Server:
+  `npm run dev`
+  Launches the local Vite server with Hot Module Replacement (HMR) at http://localhost:5173.
+
+• Build for Production:
+  `npm run build`
+  Compiles and optimizes all React JSX, CSS, and JS assets into the `dist/` directory ready for deployment.
+
+• Preview Production Build:
+  `npm run preview`
+  Serves the compiled production bundle locally to test production readiness.
+
+• Code Linting:
+  `npm run lint`
+  Runs ESLint across all source files to verify syntax and code standard compliance.
+
+6.4 CUSTOM THEME SCRIPT EXECUTION
+To automatically process component files for dark/light mode class injection:
+  `node theme-script.cjs`
+
+================================================================================
+                              END OF OVERVIEW
+================================================================================
