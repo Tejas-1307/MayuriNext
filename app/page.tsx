@@ -5,7 +5,7 @@ import Home from '@/components/home/Home';
 import Projects from '@/components/projects/Projects';
 import Amenities from '@/components/Amenities/Amenities';
 import Testimonials from '@/components/testimonials/Testimonials';
-import WhyUs from '@/components/why-us/WhyUs';
+import ArchitecturalDivider from '@/components/ui/ArchitecturalDivider';
 import Services from '@/components/services/Services';
 import Contact from '@/components/contact/Contact';
 import Footer from '@/components/Footer/Footer';
@@ -13,7 +13,6 @@ import Navbar from '@/components/Nav/Navbar';
 import Loader from '@/components/Loader/Loader';
 import FloatingConversionBar from '@/components/Nav/FloatingConversionBar';
 import EmiCalculator from '@/components/cro/EmiCalculator';
-import ProjectFaq from '@/components/cro/ProjectFaq';
 
 export default function HomePage() {
   const [loading, setLoading] = useState(false);
@@ -63,12 +62,7 @@ export default function HomePage() {
         <div id="section-testimonials">
           <Testimonials />
         </div>
-        <div id="section-why-us">
-          <WhyUs />
-        </div>
-        <div id="section-[#faq]">
-          <ProjectFaq />
-        </div>
+        <ArchitecturalDivider />
         <div id="section-services">
           <Services />
         </div>

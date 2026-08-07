@@ -16,11 +16,10 @@ const scrollTo = (id: string) => {
 
 const navLinks = [
   { label: 'Home', id: 'section-home' },
-  { label: 'Why Us', id: 'section-why-us' },
-  { label: 'Services', id: 'section-services' },
   { label: 'Projects', id: 'section-projects' },
   { label: 'Amenities', id: 'section-amenities' },
   { label: 'Testimonials', id: 'section-testimonials' },
+  { label: 'Services', id: 'section-services' },
   { label: 'Contact', id: 'section-contact' },
 ];
 
@@ -174,7 +173,7 @@ const Footer: React.FC = () => {
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
               </svg>
-              <span>MAHA RERA: P52100028741</span>
+              <span>MAHA RERA: P52100049330</span>
             </div>
 
             <div className="flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/30 px-3 py-1.5 rounded-full text-[11px] font-bold text-amber-500">
@@ -337,7 +336,7 @@ const Footer: React.FC = () => {
               +91 8237277775
             </a>
             <a
-              href="mailto:sales@mayurilandmarks.com"
+              href="mailto:mayurilandmarks.sales@gmail.com"
               className="flex items-center gap-3 text-black/70 hover:text-black text-sm font-medium transition-colors duration-300 group"
             >
               <span className="w-6 h-6 rounded-full bg-[#6CAFBF]/15 flex items-center justify-center group-hover:bg-[#6CAFBF]/30 transition-colors duration-300 shrink-0">
@@ -355,7 +354,7 @@ const Footer: React.FC = () => {
                   <path d="m22 7-10 8L2 7" />
                 </svg>
               </span>
-              sales@mayurilandmarks.com
+              mayurilandmarks.sales@gmail.com
             </a>
             <div className="flex items-start gap-3 text-black/60 text-sm font-medium">
               <span className="w-6 h-6 rounded-full bg-[#6CAFBF]/15 flex items-center justify-center shrink-0 mt-0.5">

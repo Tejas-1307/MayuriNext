@@ -8,7 +8,9 @@ import Lenis from '@studio-freight/lenis';
 import { allProjectsData, ProjectItem } from '@/lib/projectsData';
 import ScheduleSiteVisit from './ScheduleSiteVisit';
 import EmiCalculator from '@/components/cro/EmiCalculator';
-import ProjectFaq from '@/components/cro/ProjectFaq';
+import NearbySection from '@/components/location/NearbySection';
+import LocationMap from '@/components/location/LocationMap';
+import BrochureSection from './BrochureSection';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -620,12 +622,13 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ id }) => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-1 gap-y-20 gap-x-16 pt-[8vh] lg:pt-0 border-t lg:border-t-0 border-black/10 dark:border-white/10 lg:border-l lg:pl-[5vw] transition-colors duration-1000">
+          <div className="grid grid-cols-2 lg:grid-cols-1 gap-y-16 gap-x-12 pt-[8vh] lg:pt-0 border-t lg:border-t-0 border-black/10 dark:border-white/10 lg:border-l lg:pl-[5vw] transition-colors duration-1000">
             {[
               { label: 'Prime Location', value: project.location },
               { label: 'Typology', value: project.type },
               { label: 'Completion', value: project.year },
               { label: 'Scale', value: project.units },
+              { label: 'MahaRERA Registration No.', value: 'P52100049330' },
             ].map((detail, idx) => (
               <div
                 key={idx}
@@ -635,7 +638,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ id }) => {
                 <span className="text-[10px] md:text-xs tracking-[0.25em] uppercase font-bold text-black/40 dark:text-white/40 transition-colors duration-1000">
                   {detail.label}
                 </span>
-                <span className="font-[magtis] text-xl md:text-4xl uppercase font-extrabold leading-none text-black dark:text-white transition-colors duration-1000">
+                <span className="font-[magtis] text-lg md:text-3xl uppercase font-extrabold leading-none text-black dark:text-white transition-colors duration-1000">
                   {detail.value}
                 </span>
               </div>
@@ -643,6 +646,13 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ id }) => {
           </div>
         </div>
       </section>
+
+      {/* Official Brochure Download Section */}
+      <BrochureSection
+        projectName={project.name}
+        brochureUrl="/brochure-mayuri-adhinathpuram.pdf"
+        pdfFilename="Mayuri-Adhinathpuram-Brochure.pdf"
+      />
 
       <section className="relative w-full h-[80vh] mt-[10vh] md:h-[100vh] border-y border-black/10 dark:border-white/10 flex items-center justify-center p-4 md:p-8 bg-[#F5F5F0] dark:bg-[#080808] transition-colors duration-1000 overflow-hidden font-mono text-[8px] md:text-[10px] uppercase">
         <div className="absolute top-6 md:top-8 left-4 md:left-8 tracking-[0.2em] opacity-50 z-10 flex flex-col md:flex-row md:items-center">
@@ -878,7 +888,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ id }) => {
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
               </svg>
               <span className="text-emerald-600 dark:text-emerald-400 text-[11px] font-bold uppercase tracking-widest">
-                MAHA RERA Registered: P52100028741
+                MAHA RERA Registered: P52100049330
               </span>
             </div>
 
@@ -937,8 +947,10 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ id }) => {
             <div className="pt-4 flex flex-wrap gap-4">
               <a
                 href={`/brochure-${project.name.toLowerCase().replace(/\s+/g, '-')}.pdf`}
-                download
-                className="px-6 py-3 bg-black text-white dark:bg-white dark:text-black font-bold text-xs tracking-widest uppercase rounded-sm hover:bg-[#6CAFBF] dark:hover:bg-[#6CAFBF] transition-colors"
+                download={`${project.name.replace(/\s+/g, '-')}-Brochure.pdf`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-6 py-3 bg-black text-white dark:bg-white dark:text-black font-bold text-xs tracking-widest uppercase rounded-sm hover:bg-[#6CAFBF] dark:hover:bg-[#6CAFBF] dark:hover:text-black transition-colors cursor-pointer"
               >
                 Download E-Brochure (PDF)
               </a>
@@ -960,7 +972,17 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ id }) => {
 
       <EmiCalculator projectName={project.name} />
 
-      <ProjectFaq projectName={project.name} />
+      <NearbySection
+        projectName={project.name}
+        subheading={`Everything your family needs, just minutes from ${project.name}.`}
+      />
+
+      <LocationMap
+        projectName={project.name}
+        address={project.name === 'Mayuri Adhinathpuram' ? '53/8, Wadachi Wadi Road, Undri, Pune – 411 060' : `${project.name}, ${project.location}`}
+        googleMapsUrl={`https://maps.google.com/?q=${encodeURIComponent(project.name + ' Pune')}`}
+        subheading={`Situated in one of Pune's fastest-growing neighborhoods, ${project.name} offers seamless connectivity while preserving the calm and comfort of residential living.`}
+      />
 
       <ScheduleSiteVisit projectName={project.name} />
 

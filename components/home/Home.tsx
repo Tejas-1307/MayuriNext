@@ -4,6 +4,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import gsap from 'gsap';
 
+import { LandmarkThreeCanvas } from './LandmarkThreeCanvas';
+import { FeaturedLandmarkHero } from './FeaturedLandmarkHero';
+import { FeaturedLandmarkContent } from './FeaturedLandmarkContent';
+
 // Local asset paths
 const building1 = '/assets/BG_Images/building_1.png';
 const building2 = '/assets/BG_Images/building_2.png';
@@ -99,7 +103,6 @@ const Home: React.FC = () => {
   const router = useRouter();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [slideKey, setSlideKey] = useState(0);
-  const [hoveredTower, setHoveredTower] = useState<number | null>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -120,7 +123,6 @@ const Home: React.FC = () => {
   const goToSlide = (idx: number) => {
     setCurrentSlide(idx);
     setSlideKey((prev) => prev + 1);
-    setHoveredTower(null);
   };
 
   // Mouse move tracking for 3D depth parallax
@@ -134,55 +136,6 @@ const Home: React.FC = () => {
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [currentSlide]);
-
-  // GSAP Animations on slide change
-  useEffect(() => {
-    if (currentSlide === 2) {
-      gsap.to('.landmarks-bg', {
-        opacity: 1,
-        duration: 2.5,
-        ease: 'sine.inOut',
-      });
-
-      towersData.forEach((tower, idx) => {
-        gsap.fromTo(
-          `.tower-rise-${idx}`,
-          { yPercent: 110, opacity: 0 },
-          {
-            yPercent: 0,
-            opacity: 1,
-            duration: 2.2,
-            ease: 'power3.out',
-            delay: tower.delay + 0.6,
-          }
-        );
-      });
-
-      gsap.fromTo(
-        '.front-entrance',
-        { yPercent: 80, opacity: 0 },
-        {
-          yPercent: 0,
-          opacity: 1,
-          duration: 2.5,
-          ease: 'power3.out',
-          delay: 1.2,
-        }
-      );
-    } else {
-      gsap.to('.landmarks-bg', {
-        opacity: 0,
-        duration: 1.8,
-        ease: 'sine.inOut',
-      });
-
-      towersData.forEach((_, idx) => {
-        gsap.set(`.tower-rise-${idx}`, { yPercent: 110, opacity: 0 });
-      });
-
-      gsap.set('.front-entrance', { yPercent: 80, opacity: 0 });
-    }
   }, [currentSlide]);
 
   // Counter animation on slide 2
@@ -228,27 +181,6 @@ const Home: React.FC = () => {
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
-  // Helper for Z-depth parallax calculation
-  const getParallaxStyle = (depth: 'foreground' | 'middle' | 'background', isHovered: boolean) => {
-    let mult = 4;
-    if (depth === 'foreground') mult = 14;
-    else if (depth === 'middle') mult = 8;
-    else mult = 3;
-
-    const px = mousePos.x * mult;
-    const py = mousePos.y * (mult * 0.5);
-
-    const translateY = isHovered ? -12 : 0;
-    const scale = isHovered ? 1.02 : 1;
-    const rotate = isHovered ? 0.8 : 0;
-
-    return {
-      transform: `translate3d(${px}px, ${py + translateY}px, 0) scale(${scale}) rotate(${rotate}deg)`,
-      transformOrigin: 'bottom center',
-      willChange: 'transform, filter',
-    };
-  };
-
   return (
     <div className="relative w-full h-[95vh] md:h-screen bg-brand-bg overflow-hidden select-none">
       {/* ── BACKGROUND CITYSCAPE IMAGE (Slide 1 & 2) ─────────── */}
@@ -260,123 +192,14 @@ const Home: React.FC = () => {
         />
       </div>
 
-      {/* ── LANDMARKS BACKGROUND (Cross-fades in on Slide 3) ── */}
-      <div
-        className="landmarks-bg absolute inset-0 w-full h-full z-[1] pointer-events-none overflow-hidden"
-        style={{ opacity: 0 }}
-      >
-        <img
-          src="/images/services/Home_Mayuri2.png"
-          alt="Landmarks Cityscape Background"
-          className="landmarks-bg-zoom w-full h-full object-cover select-none brightness-95"
-        />
-        {/* Soft Evening Distance Fog */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent pointer-events-none" />
-      </div>
+      {/* ── LANDMARKS THREE.JS ENVIRONMENT & HERO STAGING (Slide 3) ── */}
+      <LandmarkThreeCanvas isActive={currentSlide === 2} mousePos={mousePos} />
+      <FeaturedLandmarkHero
+        isActive={currentSlide === 2}
+        mousePos={mousePos}
+        onExplore={() => router.push('/project/4')}
+      />
 
-      {/* ── REFLECTIVE ARCHITECTURAL GROUND PLANE ────────────── */}
-      <div
-        className="landmarks-ground absolute bottom-0 left-0 right-0 z-[5] pointer-events-none"
-        style={{
-          height: '22%',
-          opacity: currentSlide === 2 ? 1 : 0,
-          transition: 'opacity 2s ease',
-          background: `
-            linear-gradient(to top, 
-              rgba(15, 12, 10, 0.85) 0%, 
-              rgba(25, 20, 15, 0.5) 40%, 
-              rgba(40, 30, 20, 0.15) 75%, 
-              transparent 100%
-            )
-          `,
-        }}
-      >
-        {/* Reflective Ground Floor Line */}
-        <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#6CAFBF]/30 to-transparent absolute top-0" />
-      </div>
-
-      {/* ── 3D DEPTH LANDMARKS EXHIBITION (SLIDE 3 ONLY) ─────── */}
-      <div
-        className={`absolute inset-0 z-10 pointer-events-none transition-opacity duration-[1000ms] ${
-          currentSlide === 2
-            ? 'opacity-100 pointer-events-auto'
-            : 'opacity-0 pointer-events-none'
-        }`}
-      >
-        <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden">
-          <div className="absolute inset-0">
-            {towersData.map((tower, idx) => {
-              const isHovered = hoveredTower === idx;
-              const isOtherHovered = hoveredTower !== null && hoveredTower !== idx;
-
-              return (
-                <div
-                  key={tower.id}
-                  className={`tower-rise-${idx} absolute pointer-events-auto cursor-pointer transition-all duration-500`}
-                  style={{
-                    bottom: tower.bottom,
-                    left: tower.left,
-                    height: tower.height,
-                    width: tower.width,
-                    zIndex: isHovered ? 40 : tower.zIndex,
-                  }}
-                  onMouseEnter={() => setHoveredTower(idx)}
-                  onMouseLeave={() => setHoveredTower(null)}
-                  onClick={() => router.push(`/project/${tower.id}`)}
-                >
-                  {/* Building Image Container with 3D Depth & Shadow */}
-                  <div
-                    className="relative w-full h-full transition-transform duration-700 ease-out"
-                    style={getParallaxStyle(tower.depthLayer, isHovered)}
-                  >
-                    <img
-                      src={tower.img}
-                      alt={tower.name}
-                      className="w-full h-full object-contain object-bottom select-none transition-all duration-700"
-                      style={{
-                        filter: isHovered
-                          ? 'drop-shadow(0 0 30px rgba(108,175,191,0.6)) drop-shadow(0 20px 35px rgba(0,0,0,0.8)) brightness(1.08) saturate(1.1)'
-                          : isOtherHovered
-                          ? 'brightness(0.55) saturate(0.6) blur(0.5px)'
-                          : 'drop-shadow(0 15px 30px rgba(0,0,0,0.5)) brightness(0.95) saturate(1.05)',
-                      }}
-                    />
-
-                    {/* Architectural Base Pedestal Shadow */}
-                    <div className="absolute bottom-0 left-[10%] right-[10%] h-[3px] bg-gradient-to-r from-transparent via-[#6CAFBF]/40 to-transparent blur-[2px]" />
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-
-      {/* ── FOREGROUND LANDSCAPING ENTRANCE (FrontBG) ────────── */}
-      <div
-        className="front-entrance absolute bottom-0 left-0 right-0 pointer-events-none"
-        style={{
-          height: '35%',
-          zIndex: 12,
-          opacity: currentSlide === 2 ? 1 : 0,
-          transform: currentSlide === 2 ? 'translateY(0)' : 'translateY(30%)',
-          transition:
-            'opacity 2s ease, transform 2.5s cubic-bezier(0.16, 1, 0.3, 1)',
-          transitionDelay: currentSlide === 2 ? '1.2s' : '0s',
-        }}
-      >
-        <img
-          src={frontBG}
-          alt="Building Entrance Landscaping"
-          className="w-full h-full object-cover object-top select-none z-20"
-          style={{
-            maskImage:
-              'linear-gradient(to top, black 0%, black 40%, transparent 85%)',
-            WebkitMaskImage:
-              'linear-gradient(to top, black 0%, black 40%, transparent 85%)',
-          }}
-        />
-      </div>
 
       {/* ── SLIDES CONTENT CONTAINER ─────────────────────────── */}
       <div className="relative z-30 w-full h-full flex items-center justify-center">
@@ -446,7 +269,7 @@ const Home: React.FC = () => {
               className="slide-content-enter font-serif font-extrabold uppercase leading-[0.95] tracking-tighter text-brand-dark mt-4 mb-6 select-none"
               style={{ fontSize: 'clamp(2.4rem, 6.5vw, 5.5rem)' }}
             >
-              <div>08+ Years And</div>
+              <div>11+ Years And</div>
               <div className="text-[#4d8696] font-bold mt-2 tracking-wide font-serif">
                 still growing
               </div>
@@ -499,102 +322,8 @@ const Home: React.FC = () => {
           </div>
         </div>
 
-        {/* ── SLIDE 3: FEATURED LANDMARKS (EDITORIAL 3D SKYLINE) ── */}
-        <div
-          className={`absolute inset-0 flex items-center px-6 md:px-[8vw] transition-all duration-[1200ms] ease-[cubic-bezier(0.25,1,0.5,1)] ${
-            currentSlide === 2
-              ? 'opacity-100 translate-y-0 pointer-events-auto active'
-              : 'opacity-0 translate-y-8 pointer-events-none'
-          }`}
-        >
-          {/* Left Side: Header & Magazine Layout Typography */}
-          <div className="absolute top-[12vh] left-[6vw] md:left-[8vw] z-30 max-w-[85vw] md:max-w-sm">
-            <span className="font-sans text-xs md:text-sm font-bold tracking-[0.4em] text-brand-dark/70 uppercase">
-              Signature Collection
-            </span>
-
-            <h1 className="hidden lg:block text-[9.5rem] text-[#4d8696]/20 dark:text-[#6CAFBF]/20 font-bold font-['Magtis'] absolute bottom-[-32rem] tracking-tighter z-[5] pointer-events-none">
-              MAYURILANDMARKS
-            </h1>
-            <h2
-              className="font-serif font-extrabold uppercase leading-[0.95] tracking-tighter text-brand-dark mt-2 mb-3 select-none"
-              style={{ fontSize: 'clamp(2.0rem, 4.5vw, 3.8rem)' }}
-            >
-              Featured <span className="text-[#4d8696] font-bold font-serif">landmarks</span>
-            </h2>
-
-            <p className="font-sans font-semibold text-brand-dark/70 text-xs md:text-sm leading-relaxed max-w-[280px]">
-              Move cursor to explore 3D architectural depth. Hover over any tower for project details.
-            </p>
-          </div>
-
-          {/* Right Side: Architectural Floating Card */}
-          <div className="absolute top-[12vh] right-[6vw] md:right-[8vw] z-35 w-[85vw] md:w-[28vw] transition-all duration-500">
-            <div
-              className={`p-6 rounded-2xl bg-white/95 dark:bg-[#0f0f0f]/95 border border-brand-dark/15 dark:border-white/15 shadow-2xl backdrop-blur-xl transition-all duration-[600ms] ease-out ${
-                hoveredTower !== null
-                  ? 'opacity-100 translate-y-0 scale-100'
-                  : 'opacity-0 translate-y-4 scale-95 pointer-events-none'
-              }`}
-            >
-              {hoveredTower !== null && (
-                <div className="flex flex-col gap-4 text-brand-dark dark:text-white">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[9px] font-sans font-bold tracking-[0.2em] text-[#6CAFBF] uppercase">
-                      {towersData[hoveredTower].type}
-                    </span>
-                    <span className="px-2 py-0.5 rounded-full text-[9px] font-bold bg-[#6CAFBF]/10 text-[#6CAFBF] border border-[#6CAFBF]/30">
-                      {towersData[hoveredTower].status}
-                    </span>
-                  </div>
-
-                  <h3 className="font-serif text-lg md:text-xl font-bold uppercase leading-tight select-none">
-                    {towersData[hoveredTower].name}
-                  </h3>
-
-                  <div className="grid grid-cols-2 gap-4 border-t border-brand-dark/10 dark:border-white/10 pt-3">
-                    <div className="flex flex-col gap-1">
-                      <span className="text-[8px] font-sans text-brand-dark/40 dark:text-white/40 font-bold uppercase tracking-wider">
-                        Location
-                      </span>
-                      <span className="text-[11px] font-semibold">
-                        {towersData[hoveredTower].location}
-                      </span>
-                    </div>
-                    <div className="flex flex-col gap-1">
-                      <span className="text-[8px] font-sans text-brand-dark/40 dark:text-white/40 font-bold uppercase tracking-wider">
-                        Scale
-                      </span>
-                      <span className="text-[11px] font-semibold">
-                        {towersData[hoveredTower].scale}
-                      </span>
-                    </div>
-                  </div>
-
-                  <button
-                    onClick={() =>
-                      router.push(`/project/${towersData[hoveredTower].id}`)
-                    }
-                    className="mt-2 flex items-center justify-center gap-2 bg-brand-dark dark:bg-white hover:bg-[#6CAFBF] text-white dark:text-black hover:text-black py-3 rounded-full font-sans font-bold text-[9px] uppercase tracking-widest transition-all duration-300 w-full cursor-pointer shadow-md"
-                  >
-                    Explore Landmark Specs
-                    <svg
-                      width="10"
-                      height="10"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      className="-rotate-45"
-                    >
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                  </button>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
+        {/* ── SLIDE 3: FEATURED LANDMARKS CONTENT ─────────── */}
+        <FeaturedLandmarkContent isActive={currentSlide === 2} />
       </div>
 
       {/* ── BOTTOM TABS & NAVIGATION CONTROLS ─────────────────── */}

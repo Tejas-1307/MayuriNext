@@ -31,7 +31,7 @@ const contactInfo = [
   },
   {
     label: 'Email Us',
-    value: 'sales@mayurilandmarks.com',
+    value: 'mayurilandmarks.sales@gmail.com',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="4" width="20" height="16" rx="2" />
@@ -118,14 +118,14 @@ const Contact: React.FC = () => {
           Let's Connect
         </p>
         <div ref={headlineRef} style={{ perspective: '1000px' }}>
-          {['Start Your', 'Dream Project.'].map((line, i) => (
+          {['BEGIN THE', 'JOURNEY TO YOUR', 'FOREVER HOME.'].map((line, i) => (
             <div key={i} className="overflow-hidden leading-none">
               <span
                 ref={addTitle}
                 className={`block font-[magtis] uppercase font-extrabold tracking-tighter leading-[0.88] ${
                   i === 1 ? 'text-[#6CAFBF]' : 'text-black dark:text-white'
                 }`}
-                style={{ fontSize: 'clamp(2.8rem, 8.5vw, 8.5rem)' }}
+                style={{ fontSize: 'clamp(2.5rem, 7.5vw, 7.5rem)' }}
               >
                 {line}
               </span>
@@ -181,56 +181,6 @@ const Contact: React.FC = () => {
         {/* Right: Unified Booking Form Architecture */}
         <div ref={formRef}>
           <BookingForm type="site-visit" sourcePage="Contact Page" />
-        </div>
-      </div>
-
-      {/* MAP SECTION */}
-      <div id="section-map" className="relative w-full" style={{ height: '45vh' }}>
-        <iframe
-          title="Mayuri Adhinathpuram Location"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.789069337!2d73.87740637504766!3d18.463598282617!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2eac965f7fcdb%3A0xc7fcb59ea0c26888!2sMayuri%20Adhinathpuram!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
-          width="100%"
-          height="100%"
-          style={{
-            border: 0,
-            filter:
-              'invert(90%) hue-rotate(180deg) saturate(0.3) brightness(0.75)',
-          }}
-          allowFullScreen
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        />
-
-        <div className="absolute top-6 left-6 md:top-8 md:left-8 z-10 bg-[#0A0A0A]/90 backdrop-blur-md border border-black/10 dark:border-white/10 rounded-sm p-4 md:p-6 flex flex-col gap-2 max-w-xs">
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-[#6CAFBF] animate-pulse" />
-            <span className="text-[#6CAFBF] text-[10px] tracking-[0.25em] uppercase font-bold">
-              Our Location
-            </span>
-          </div>
-          <p className="text-white font-bold text-sm leading-snug">
-            Mayuri Adhinathpuram
-          </p>
-          <p className="text-white/50 text-xs leading-relaxed">
-            53/8, Wadachi Wadi Road, Undri, Pune – 411 060
-          </p>
-          <a
-            href="https://maps.google.com/?q=Mayuri+Adhinathpuram+Pune"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-[#6CAFBF] text-xs tracking-widest uppercase font-bold hover:gap-3 transition-all mt-1"
-          >
-            Open in Maps
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M5 12H19M19 12L13 6M19 12L13 18"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </a>
         </div>
       </div>
     </section>

@@ -32,7 +32,8 @@ const AVAILABLE_PROJECTS = [
   'Mayuri Infinity',
   'Mayuri Optimum',
   'Mayuri Residency',
-  'Mayuri Elite',
+  'Mayuri Adhinathpuram Sapphire',
+  'Mayuri Vrindha',
   'Other / Custom Requirement',
 ];
 

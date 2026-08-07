@@ -14,7 +14,7 @@ const optimumVideo = '/assets/Flats_Img/Mayuri Optimum Walkthrough.mp4';
 
 export interface ProjectItemData {
   id: number;
-  status: 'completed' | 'ongoing';
+  status: 'completed' | 'ongoing' | 'upcoming';
   name: string;
   label: string;
   location: string;
@@ -103,33 +103,33 @@ export const allProjects: ProjectItemData[] = [
   },
   {
     id: 5,
-    status: 'ongoing',
-    name: 'Mayuri Optimum Phase 2',
-    label: 'MAYURI OPTIMUM 2',
+    status: 'completed',
+    name: 'Mayuri Adhinathpuram Sapphire',
+    label: 'MAYURI ADHINATHPURAM SAPPHIRE',
     location: 'Pune, Maharashtra',
-    type: 'Mixed-Use Development',
-    year: '2026 (Est.)',
+    type: 'Residential Premium Apartments',
+    year: '2024',
     units: '150+ Units',
     img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1800&auto=format&fit=crop',
     thumb: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600&auto=format&fit=crop',
     size: 'small',
-    desc: 'The next evolution of commercial and residential fusion, bringing high-tech office spaces, luxury retail arcades, and sky-deck residences under a unified architectural statement.',
-    brochure: '/brochure-mayuri-optimum2.pdf',
+    desc: 'An elegant residential address crafted with contemporary architecture, expansive open spaces, premium lifestyle amenities, and thoughtfully designed homes that redefine everyday living.',
+    brochure: '/brochure-mayuri-adhinathpuram-sapphire.pdf',
   },
   {
     id: 6,
-    status: 'ongoing',
-    name: 'Mayuri Elite',
-    label: 'MAYURI ELITE',
-    location: 'Pune, Maharashtra',
-    type: 'Luxury Villas',
-    year: '2026 (Est.)',
-    units: '60+ Villas',
+    status: 'upcoming',
+    name: 'Mayuri Vrindha',
+    label: 'MAYURI VRINDHA',
+    location: 'Hadapsar, Pune',
+    type: 'Residential Development',
+    year: '2027 (Est.)',
+    units: '200+ Units',
     img: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1800&auto=format&fit=crop',
     thumb: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=600&auto=format&fit=crop',
     size: 'small',
-    desc: 'Private gated luxury villa sanctuary featuring sprawling green lawns, individual private infinity pools, and bespoke architectural finishes designed for maximum privacy.',
-    brochure: '/brochure-mayuri-elite.pdf',
+    desc: 'A thoughtfully planned upcoming residential community in Hadapsar designed to deliver modern living with exceptional connectivity, elegant architecture, and future-ready amenities.',
+    brochure: '/brochure-mayuri-vrindha.pdf',
   },
 ];
 
@@ -141,7 +141,7 @@ const Projects: React.FC = () => {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const router = useRouter();
 
-  const [activeTab, setActiveTab] = useState<'all' | 'completed' | 'ongoing'>('all');
+  const [activeTab, setActiveTab] = useState<'all' | 'completed' | 'ongoing' | 'upcoming'>('all');
   const [quickViewProject, setQuickViewProject] = useState<ProjectItemData | null>(null);
   const [visitModalProject, setVisitModalProject] = useState<string | null>(null);
 
@@ -242,7 +242,7 @@ const Projects: React.FC = () => {
         {/* Filter Tabs & Inside Mayuri Button */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-black/10 dark:border-white/10 pb-8">
           <div className="flex flex-wrap items-center gap-2">
-            {(['all', 'completed', 'ongoing'] as const).map((tab) => (
+            {(['all', 'completed', 'ongoing', 'upcoming'] as const).map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
@@ -252,7 +252,13 @@ const Projects: React.FC = () => {
                     : 'bg-transparent text-black/50 dark:text-white/50 hover:text-black dark:hover:text-white border border-black/15 dark:border-white/15'
                 }`}
               >
-                {tab === 'all' ? 'All Projects' : tab === 'completed' ? 'Completed' : 'Ongoing'}
+                {tab === 'all'
+                  ? 'All Projects'
+                  : tab === 'completed'
+                  ? 'Completed'
+                  : tab === 'ongoing'
+                  ? 'Ongoing'
+                  : 'Upcoming'}
                 <span
                   className={`ml-2 text-xs font-bold transition-colors duration-300 ${
                     activeTab === tab ? 'text-[#6CAFBF]' : 'text-current opacity-50'
@@ -330,11 +336,19 @@ const Projects: React.FC = () => {
               <div className="absolute top-4 left-4 flex items-center gap-2 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10">
                 <div
                   className={`w-2 h-2 rounded-full animate-pulse ${
-                    project.status === 'completed' ? 'bg-emerald-400' : 'bg-[#6CAFBF]'
+                    project.status === 'completed'
+                      ? 'bg-emerald-400'
+                      : project.status === 'ongoing'
+                      ? 'bg-[#6CAFBF]'
+                      : 'bg-amber-400'
                   }`}
                 />
                 <span className="text-white text-[10px] tracking-widest uppercase font-bold">
-                  {project.status === 'completed' ? 'Completed' : 'Ongoing'}
+                  {project.status === 'completed'
+                    ? 'Completed'
+                    : project.status === 'ongoing'
+                    ? 'Ongoing'
+                    : 'Upcoming'}
                 </span>
               </div>
 

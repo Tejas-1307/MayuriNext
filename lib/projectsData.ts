@@ -1,6 +1,6 @@
 export interface ProjectItem {
   id: number;
-  status: 'completed' | 'ongoing';
+  status: 'completed' | 'ongoing' | 'upcoming';
   name: string;
   label: string;
   location: string;
@@ -33,7 +33,7 @@ export const allProjectsData: ProjectItem[] = [
       'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1800&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1460317442991-0ec209397118?q=80&w=1800&auto=format&fit=crop',
     ],
-    desc: 'Mayuri Infinity represents the zenith of contemporary residential design, offering residents an unparalleled panoramic living experience in the heart of Pune. Meticulously crafted with a focus on biophilic elements, natural light, and cross-ventilation, each residence is a sanctuary of peace. The project integrates state-of-the-art home automation with lush, expansive terrace gardens, creating a seamless transition between indoor luxury and the vibrant natural landscape surrounding the premises. Delivering not just a physical home, but a truly elevated and mindful lifestyle.'
+    desc: 'Mayuri Infinity represents the zenith of contemporary residential design, offering residents an unparalleled panoramic living experience in the heart of Pune. Meticulously crafted with a focus on biophilic elements, natural light, and cross-ventilation, each residence is a sanctuary of peace. The project integrates state-of-the-art home automation with lush, expansive terrace gardens, creating a seamless transition between indoor luxury and the vibrant natural landscape surrounding the premises.',
   },
   {
     id: 2,
@@ -52,7 +52,7 @@ export const allProjectsData: ProjectItem[] = [
       'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1800&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1800&auto=format&fit=crop',
     ],
-    desc: 'Setting a rigorous new benchmark for corporate architecture, Mayuri Optimum integrates sustainable energy practices with bold, geometric facade design to empower modern businesses. The striking low-e glass skin ensures maximum thermal efficiency while bathing the premium office suites in diffuse natural sunlight. Featuring double-height statement lobbies, intelligent building management systems, and high-speed transit elevators, Optimum provides a world-class environment explicitly designed to foster corporate productivity, high-level networking, and undeniable prestige.'
+    desc: 'Setting a rigorous new benchmark for corporate architecture, Mayuri Optimum integrates sustainable energy practices with bold, geometric facade design to empower modern businesses. The striking low-e glass skin ensures maximum thermal efficiency while bathing the premium office suites in diffuse natural sunlight. Featuring double-height statement lobbies and intelligent building management systems.',
   },
   {
     id: 3,
@@ -69,13 +69,13 @@ export const allProjectsData: ProjectItem[] = [
       'https://images.unsplash.com/photo-1460317442991-0ec209397118?q=80&w=1800&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=1800&auto=format&fit=crop',
     ],
-    desc: 'An intimate enclave of boutique luxury apartments tailored strictly for families seeking an oasis of calm without compromising urban connectivity. Mayuri Residency features a bespoke collection of limited homes, designed with sweeping ergonomic layouts, private foyer entrances, and premium imported material finishes. The property boasts a fully equipped clubhouse, temperature-controlled leisure pools, and secure children’s zones, making it the ultimate destination for refined community living where every architectural decision revolves around the residents’ holistic well-being.'
+    desc: 'An intimate enclave of boutique luxury apartments tailored strictly for families seeking an oasis of calm without compromising urban connectivity. Mayuri Residency features a bespoke collection of limited homes, designed with sweeping ergonomic layouts, private foyer entrances, and premium imported material finishes.',
   },
   {
     id: 4,
     status: 'ongoing',
     name: 'Adhinathpuram',
-    label: ' Adhinathpuram',
+    label: 'ADHINATHPURAM',
     location: 'Pune, Maharashtra',
     type: 'Residential Township',
     year: '2025 (Est.)',
@@ -89,16 +89,16 @@ export const allProjectsData: ProjectItem[] = [
       'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1800&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1460317442991-0ec209397118?q=80&w=1800&auto=format&fit=crop',
     ],
-    desc: 'The highly anticipated sequel to our flagship development. Infinity II promises to redefine the expansive township footprint by combining visionary architecture with self-sustaining community micro-ecosystems. Spanning acres of lush landscapes, the project features integrated jogging trails, multiple professional sports arenas, and boutique retail pavilions right at your doorstep. Crafted for the future of urban dwelling, every tower incorporates rainwater harvesting loops, active solar integration, and smart parking arrays, establishing a sustainable, ultra-modern generational home.'
+    desc: 'Our flagship modern township combining visionary architecture with self-sustaining community micro-ecosystems. Spanning acres of lush landscapes with integrated jogging trails, smart parking arrays, and world-class sports amenities, Mayuri Adhinathpuram establishes a new standard for holistic residential living.',
   },
   {
     id: 5,
-    status: 'ongoing',
-    name: 'Mayuri Optimum Phase 2',
-    label: 'MAYURI OPTIMUM 2',
+    status: 'completed',
+    name: 'Adhinathpuram Sapphire',
+    label: 'ADHINATHPURAM SAPPHIRE',
     location: 'Pune, Maharashtra',
-    type: 'Mixed-Use Development',
-    year: '2026 (Est.)',
+    type: 'Residential Premium Apartments',
+    year: '2024',
     units: '150+ Units',
     img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1800&auto=format&fit=crop',
     thumb: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600&auto=format&fit=crop',
@@ -106,24 +106,23 @@ export const allProjectsData: ProjectItem[] = [
       'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1800&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1800&auto=format&fit=crop',
     ],
-    desc: 'Expanding the Optimum footprint, Phase 2 brings world-class lifestyle zones bridging the gap between rigorous work routines, domestic life, and exquisite leisure. Conceived as a high-street commercial hub, the development introduces a curated mix of luxury retail fronts, gourmet dining terraces, and agile office suites. It acts as an economic and cultural catalyst for the neighborhood, boasting expansive pedestrian promenades, interactive water features, and shaded outdoor seating zones that fluidly connect commercial energy with a relaxed, engaging pedestrian experience.'
+    desc: 'An elegant residential address crafted with contemporary architecture, expansive open spaces, premium lifestyle amenities, and thoughtfully designed homes that redefine everyday living.',
   },
   {
     id: 6,
-    status: 'ongoing',
-    name: 'Mayuri Elite',
-    label: 'MAYURI ELITE',
-    location: 'Pune, Maharashtra',
-    type: 'Luxury Villas',
-    year: '2026 (Est.)',
-    units: '60+ Villas',
+    status: 'upcoming',
+    name: 'Mayuri Vrindha',
+    label: 'MAYURI VRINDHA',
+    location: 'Hadapsar, Pune',
+    type: 'Residential Development',
+    year: '2027 (Est.)',
+    units: '200+ Units',
     img: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1800&auto=format&fit=crop',
     thumb: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=600&auto=format&fit=crop',
     images: [
       'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1800&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1460317442991-0ec209397118?q=80&w=1800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1800&auto=format&fit=crop',
     ],
-    desc: 'An ultra-exclusive collection of signature bespoke villas meticulously designed for the few. Featuring private plunge pools, expansive terraced sky-gardens, and bespoke interior finish palettes, Mayuri Elite represents the ultimate pinnacle of private urban living. The architectural language speaks loudly of timeless minimalism, utilizing native indigenous stone, vast unbroken panoramic glass panels, and rare timber highlights to craft homes that age like fine art. Supported with a 3-tier matrix security system and 24/7 personalized concierge services, Elite offers total seclusion wrapped in ultimate luxury.'
+    desc: 'A thoughtfully planned upcoming residential community in Hadapsar designed to deliver modern living with exceptional connectivity, elegant architecture, and future-ready amenities.',
   },
 ];
