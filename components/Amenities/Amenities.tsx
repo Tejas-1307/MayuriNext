@@ -92,7 +92,7 @@ const amenities = [
     category: 'Safety & Backup',
     name: '24/7 CCTV & EV Charging Stations',
     desc: '3-tier digital surveillance with dedicated fast-charging bays for electric vehicle owners.',
-    img: 'https://images.unsplash.com/photo-1558441719-67450807e989?q=80&w=1200&auto=format&fit=crop',
+    img: 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?q=80&w=1200&auto=format&fit=crop',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="7" width="20" height="15" rx="2" ry="2" />
@@ -293,11 +293,10 @@ const Amenities: React.FC = () => {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-5 py-2.5 rounded-full text-xs font-bold tracking-widest uppercase transition-all duration-300 ${
-                activeCategory === cat
+              className={`px-5 py-2.5 rounded-full text-xs font-bold tracking-widest uppercase transition-all duration-300 ${activeCategory === cat
                   ? 'bg-black text-white dark:bg-white dark:text-black shadow-md'
                   : 'bg-black/5 dark:bg-white/5 text-black/60 dark:text-white/60 hover:bg-black/10 dark:hover:bg-white/10'
-              }`}
+                }`}
             >
               {cat}
             </button>
@@ -324,17 +323,15 @@ const Amenities: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
               <div
-                className={`absolute inset-0 bg-[#6CAFBF]/15 transition-opacity duration-500 ${
-                  hoveredId === amenity.id ? 'opacity-100' : 'opacity-0'
-                }`}
+                className={`absolute inset-0 bg-[#6CAFBF]/15 transition-opacity duration-500 ${hoveredId === amenity.id ? 'opacity-100' : 'opacity-0'
+                  }`}
               />
 
               <div
-                className={`absolute top-4 left-4 w-9 h-9 md:w-10 md:h-10 rounded-full border flex items-center justify-center transition-all duration-500 ${
-                  hoveredId === amenity.id
+                className={`absolute top-4 left-4 w-9 h-9 md:w-10 md:h-10 rounded-full border flex items-center justify-center transition-all duration-500 ${hoveredId === amenity.id
                     ? 'bg-[#6CAFBF] border-[#6CAFBF] text-black'
                     : 'bg-white/10 border-white/25 text-white backdrop-blur-sm'
-                }`}
+                  }`}
               >
                 {amenity.icon}
               </div>
@@ -344,26 +341,23 @@ const Amenities: React.FC = () => {
                   {amenity.category}
                 </span>
                 <h3
-                  className={`font-[magtis] uppercase font-extrabold leading-tight transition-colors duration-400 ${
-                    hoveredId === amenity.id ? 'text-[#6CAFBF]' : 'text-white'
-                  }`}
+                  className={`font-[magtis] uppercase font-extrabold leading-tight transition-colors duration-400 ${hoveredId === amenity.id ? 'text-[#6CAFBF]' : 'text-white'
+                    }`}
                   style={{ fontSize: 'clamp(0.9rem, 2vw, 1.4rem)' }}
                 >
                   {amenity.name}
                 </h3>
                 <p
-                  className={`text-white/70 text-xs md:text-sm font-medium leading-relaxed transition-all duration-500 overflow-hidden ${
-                    hoveredId === amenity.id
+                  className={`text-white/70 text-xs md:text-sm font-medium leading-relaxed transition-all duration-500 overflow-hidden ${hoveredId === amenity.id
                       ? 'opacity-100 max-h-16'
                       : 'opacity-0 max-h-0'
-                  }`}
+                    }`}
                 >
                   {amenity.desc}
                 </p>
                 <div
-                  className={`h-[2px] bg-[#6CAFBF] transition-all duration-700 ease-out ${
-                    hoveredId === amenity.id ? 'w-10 md:w-14' : 'w-0'
-                  }`}
+                  className={`h-[2px] bg-[#6CAFBF] transition-all duration-700 ease-out ${hoveredId === amenity.id ? 'w-10 md:w-14' : 'w-0'
+                    }`}
                 />
               </div>
             </div>
