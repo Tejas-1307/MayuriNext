@@ -150,30 +150,6 @@ export const FeaturedLandmarkHero: React.FC<FeaturedLandmarkHeroProps> = ({
               }}
             />
 
-            {/* ── INTERACTIVE LIVING WINDOW LIGHTING OVERLAY ──── */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden">
-              {/* Window Glow Spots */}
-              <div
-                className="absolute top-[28%] left-[42%] w-[16%] h-[8%] rounded-sm bg-[#e0f7fa] opacity-75 blur-[1.5px] animate-window-pulse"
-                style={{ mixBlendMode: 'screen' }}
-              />
-              <div
-                className="absolute top-[38%] left-[44%] w-[14%] h-[7%] rounded-sm bg-[#b2ebf2] opacity-80 blur-[1px] animate-window-pulse"
-                style={{ animationDelay: '1.2s', mixBlendMode: 'screen' }}
-              />
-              <div
-                className="absolute top-[52%] left-[41%] w-[18%] h-[6%] rounded-sm bg-[#80deea] opacity-70 blur-[1.5px] animate-window-pulse"
-                style={{ animationDelay: '2.4s', mixBlendMode: 'screen' }}
-              />
-              <div
-                className="absolute top-[65%] left-[43%] w-[15%] h-[7%] rounded-sm bg-[#e0f7fa] opacity-85 blur-[1px] animate-window-pulse"
-                style={{ animationDelay: '0.8s', mixBlendMode: 'screen' }}
-              />
-              <div
-                className="absolute top-[45%] left-[58%] w-[10%] h-[12%] rounded-sm bg-[#4dd0e1] opacity-65 blur-[2px] animate-window-pulse"
-                style={{ animationDelay: '3.1s', mixBlendMode: 'screen' }}
-              />
-            </div>
 
             {/* Subtle Glass Bloom Shimmer */}
             <div className="absolute top-[15%] right-[22%] w-[35%] h-[40%] bg-gradient-to-tr from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000 transform -rotate-12 pointer-events-none blur-[4px]" />
