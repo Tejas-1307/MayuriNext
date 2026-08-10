@@ -250,7 +250,13 @@ const Footer: React.FC = () => {
             ].map(({ name, icon }) => (
               <a
                 key={name}
-                href="#"
+                href={
+                  name === 'Instagram'
+                    ? 'https://www.instagram.com/mayurilandmarks?igsh=MzFpNm82eHQ0ZnVo'
+                    : '#'
+                }
+                target={name === 'Instagram' ? '_blank' : undefined}
+                rel={name === 'Instagram' ? 'noopener noreferrer' : undefined}
                 aria-label={name}
                 className="w-10 h-10 rounded-full border border-black/15 flex items-center justify-center text-black/50 hover:bg-black hover:text-white hover:border-black transition-all duration-400"
               >

@@ -168,7 +168,11 @@ const Contact: React.FC = () => {
               {['Instagram', 'LinkedIn', 'Facebook'].map((social) => (
                 <a
                   key={social}
-                  href="#"
+                  href={
+                    social === 'Instagram'
+                      ? 'https://www.instagram.com/mayurilandmarks?igsh=MzFpNm82eHQ0ZnVo'
+                      : '#'
+                  }
                   className="text-black/40 dark:text-white/40 text-xs md:text-sm font-semibold tracking-wide hover:text-[#6CAFBF] transition-colors border-b border-black/10 dark:border-white/10 hover:border-[#6CAFBF] pb-1"
                 >
                   {social}

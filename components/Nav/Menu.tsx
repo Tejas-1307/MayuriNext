@@ -283,7 +283,9 @@ const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
             ref={(el) => {
               subtextRef.current[7] = el;
             }}
-            href="#"
+            href="https://www.instagram.com/mayurilandmarks?igsh=MzFpNm82eHQ0ZnVo"
+            target="_blank"
+            rel="noopener noreferrer"
             className="hover:text-[#6CAFBF] transition-colors"
           >
             Instagram
