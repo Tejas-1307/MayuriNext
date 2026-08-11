@@ -58,7 +58,7 @@ export default function FloatingConversionBar() {
       {/* Site Visit Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md overflow-y-auto animate-in fade-in duration-300">
-          <div className="relative w-full max-w-xl bg-[#F5F5F0] dark:bg-[#0A0A0A] border border-black/10 dark:border-white/10 rounded-md overflow-hidden shadow-2xl my-8 p-6 md:p-8">
+          <div className="relative w-full max-w-3xl lg:max-w-4xl bg-[#F5F5F0] dark:bg-[#0A0A0A] border border-black/10 dark:border-white/10 rounded-md shadow-2xl my-auto p-5 md:p-7 max-h-[92vh] overflow-y-auto">
             <button
               onClick={() => setIsModalOpen(false)}
               className="absolute top-4 right-4 z-50 text-black dark:text-white bg-black/10 dark:bg-white/10 hover:bg-black/20 dark:hover:bg-white/20 p-2.5 rounded-full transition-colors"

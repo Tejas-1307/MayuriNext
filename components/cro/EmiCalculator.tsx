@@ -1,12 +1,20 @@
 'use client';
 
 import React, { useState, useId } from 'react';
-import ScheduleSiteVisit from '@/components/projects/ScheduleSiteVisit';
 
 interface EmiCalculatorProps {
   defaultPrice?: number;
   projectName?: string;
 }
+
+const BANK_PARTNERS = [
+  { name: 'SBI', rate: 8.4 },
+  { name: 'HDFC BANK', rate: 8.5 },
+  { name: 'ICICI BANK', rate: 8.55 },
+  { name: 'AXIS BANK', rate: 8.6 },
+];
+
+const TENURE_PRESETS = [10, 15, 20, 25, 30];
 
 export default function EmiCalculator({
   defaultPrice = 8500000,
@@ -21,7 +29,8 @@ export default function EmiCalculator({
   const [downPaymentPercent, setDownPaymentPercent] = useState<number>(20);
   const [interestRate, setInterestRate] = useState<number>(8.5);
   const [tenureYears, setTenureYears] = useState<number>(20);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedBank, setSelectedBank] = useState<string | null>('HDFC BANK');
+  const [showTaxBreakdown, setShowTaxBreakdown] = useState<boolean>(false);
 
   // Math calculation
   const downPaymentAmount = (propertyPrice * downPaymentPercent) / 100;
@@ -40,7 +49,18 @@ export default function EmiCalculator({
       : Math.round(loanAmount / totalMonths);
 
   const totalAmountPayable = monthlyEmi * totalMonths;
-  const totalInterestPayable = totalAmountPayable - loanAmount;
+  const totalInterestPayable = Math.max(0, totalAmountPayable - loanAmount);
+
+  // Split Percentages for Visual Progress Bar
+  const principalPercent =
+    totalAmountPayable > 0
+      ? Math.min(100, Math.max(0, Math.round((loanAmount / totalAmountPayable) * 100)))
+      : 50;
+  const interestPercent = 100 - principalPercent;
+
+  // Estimated Tax Savings (Sec 24b max 2L on interest, Sec 80C max 1.5L on principal)
+  const annualInterest = Math.min(200000, Math.round(totalInterestPayable / tenureYears));
+  const totalTaxSavingYearly = annualInterest + 150000;
 
   const formatCurrency = (val: number) => {
     if (val >= 10000000) {
@@ -50,6 +70,11 @@ export default function EmiCalculator({
       return `₹${(val / 100000).toFixed(2)} Lakh`;
     }
     return `₹${val.toLocaleString('en-IN')}`;
+  };
+
+  const handleBankSelect = (bankName: string, rate: number) => {
+    setSelectedBank(bankName);
+    setInterestRate(rate);
   };
 
   return (
@@ -64,7 +89,7 @@ export default function EmiCalculator({
           </h2>
         </div>
         <p className="text-black/60 dark:text-white/60 text-sm md:text-base font-medium max-w-md leading-relaxed">
-          Estimate your monthly investment for <span className="font-bold text-black dark:text-white">{projectName}</span> with pre-approved banking partner rates (SBI, HDFC, ICICI, Axis).
+          Estimate your monthly investment for <span className="font-bold text-black dark:text-white">{projectName}</span> with interactive pre-approved banking partner rates.
         </p>
       </div>
 
@@ -122,14 +147,17 @@ export default function EmiCalculator({
               type="range"
               min={7.5}
               max={12}
-              step={0.1}
+              step={0.05}
               value={interestRate}
-              onChange={(e) => setInterestRate(Number(e.target.value))}
+              onChange={(e) => {
+                setInterestRate(Number(e.target.value));
+                setSelectedBank(null);
+              }}
               className="w-full accent-[#6CAFBF] cursor-pointer"
             />
           </div>
 
-          {/* Loan Tenure (Years) */}
+          {/* Loan Tenure (Years) & Preset Chips */}
           <div className="space-y-2">
             <div className="flex justify-between items-center text-xs font-bold uppercase">
               <label htmlFor={loanTenureId} className="text-black/60 dark:text-white/60">Loan Tenure</label>
@@ -145,34 +173,105 @@ export default function EmiCalculator({
               onChange={(e) => setTenureYears(Number(e.target.value))}
               className="w-full accent-[#6CAFBF] cursor-pointer"
             />
+
+            {/* Quick Tenure Presets */}
+            <div className="flex items-center gap-2 pt-1">
+              <span className="text-[10px] font-bold uppercase text-black/40 dark:text-white/40 tracking-wider">Quick Tenure:</span>
+              <div className="flex flex-wrap gap-1.5">
+                {TENURE_PRESETS.map((t) => (
+                  <button
+                    key={t}
+                    type="button"
+                    onClick={() => setTenureYears(t)}
+                    className={`px-2.5 py-1 rounded-full text-[10px] font-bold transition-all border ${
+                      tenureYears === t
+                        ? 'bg-[#6CAFBF] text-black border-[#6CAFBF] shadow-sm'
+                        : 'bg-black/5 dark:bg-white/5 text-black/70 dark:text-white/70 border-black/10 dark:border-white/10 hover:border-[#6CAFBF]'
+                    }`}
+                  >
+                    {t} Yrs
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
 
-          {/* Bank Partner Logos */}
-          <div className="pt-4 border-t border-black/10 dark:border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs font-bold text-black/40 dark:text-white/40 uppercase">
-            <span>Pre-Approved Bank Partners:</span>
-            <div className="flex items-center gap-4 text-black dark:text-white font-extrabold">
-              <span>SBI</span>
-              <span>•</span>
-              <span>HDFC BANK</span>
-              <span>•</span>
-              <span>ICICI BANK</span>
-              <span>•</span>
-              <span>AXIS BANK</span>
+          {/* Interactive Pre-Approved Bank Partner Rates Selector */}
+          <div className="pt-4 border-t border-black/10 dark:border-white/10 space-y-3">
+            <div className="flex items-center justify-between text-xs font-bold text-black/50 dark:text-white/50 uppercase tracking-wider">
+              <span>Select Pre-Approved Bank Partner Rate:</span>
+              <span className="text-[10px] text-[#6CAFBF] font-mono">⚡ Click to Apply Rate</span>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+              {BANK_PARTNERS.map((bank) => {
+                const isSelected = selectedBank === bank.name || interestRate === bank.rate;
+                return (
+                  <button
+                    key={bank.name}
+                    type="button"
+                    onClick={() => handleBankSelect(bank.name, bank.rate)}
+                    className={`px-3 py-2.5 rounded-sm text-xs font-bold text-center uppercase transition-all duration-300 border flex flex-col items-center justify-center gap-0.5 ${
+                      isSelected
+                        ? 'bg-black text-white dark:bg-white dark:text-black border-black dark:border-white shadow-md scale-[1.02]'
+                        : 'bg-black/5 dark:bg-white/5 text-black/80 dark:text-white/80 border-black/10 dark:border-white/10 hover:border-[#6CAFBF]'
+                    }`}
+                  >
+                    <span className="font-extrabold tracking-wider">{bank.name}</span>
+                    <span className={`text-[11px] font-mono ${isSelected ? 'text-[#6CAFBF]' : 'text-black/50 dark:text-white/50'}`}>
+                      {bank.rate}% p.a.
+                    </span>
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>
 
-        {/* Results Card (5 cols) */}
+        {/* Results & Interactive Engagement Card (5 cols) */}
         <div className="lg:col-span-5 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 p-6 md:p-8 rounded-sm flex flex-col justify-between space-y-6">
-          <div className="space-y-4">
-            <span className="text-xs font-bold tracking-[0.2em] uppercase text-black/40 dark:text-white/40 block">
-              Estimated Monthly EMI
-            </span>
-            <div className="font-[magtis] text-4xl md:text-5xl font-extrabold text-[#6CAFBF]">
-              ₹{monthlyEmi.toLocaleString('en-IN')}<span className="text-xs font-sans text-black/50 dark:text-white/50">/month</span>
+          <div className="space-y-5">
+            <div>
+              <span className="text-xs font-bold tracking-[0.2em] uppercase text-black/40 dark:text-white/40 block mb-1">
+                Estimated Monthly EMI
+              </span>
+              <div className="font-[magtis] text-4xl md:text-5xl font-extrabold text-[#6CAFBF]">
+                ₹{monthlyEmi.toLocaleString('en-IN')}<span className="text-xs font-sans text-black/50 dark:text-white/50">/month</span>
+              </div>
             </div>
 
-            <div className="space-y-2.5 pt-4 border-t border-black/10 dark:border-white/10 text-xs">
+            {/* Interactive Visual Payment Split Bar (Principal vs Interest) */}
+            <div className="space-y-2 pt-2 border-t border-black/10 dark:border-white/10">
+              <div className="flex justify-between items-center text-xs font-bold">
+                <span className="text-black/70 dark:text-white/70 uppercase tracking-wider">Payment Breakdown</span>
+                <span className="text-[#6CAFBF] font-mono text-[11px]">{principalPercent}% Principal • {interestPercent}% Interest</span>
+              </div>
+              {/* Segmented Dual Bar */}
+              <div className="w-full h-3 bg-black/10 dark:bg-white/10 rounded-full overflow-hidden flex shadow-inner">
+                <div
+                  style={{ width: `${principalPercent}%` }}
+                  className="h-full bg-[#6CAFBF] transition-all duration-500"
+                  title={`Principal: ${principalPercent}%`}
+                />
+                <div
+                  style={{ width: `${interestPercent}%` }}
+                  className="h-full bg-slate-700 dark:bg-slate-400 transition-all duration-500 opacity-80"
+                  title={`Interest: ${interestPercent}%`}
+                />
+              </div>
+              <div className="flex justify-between items-center text-[10px] font-bold text-black/50 dark:text-white/50 pt-0.5">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-[#6CAFBF]" />
+                  <span>Principal: {formatCurrency(loanAmount)}</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-slate-700 dark:bg-slate-400 opacity-80" />
+                  <span>Interest: {formatCurrency(totalInterestPayable)}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Loan Details List */}
+            <div className="space-y-2.5 pt-3 border-t border-black/10 dark:border-white/10 text-xs">
               <div className="flex justify-between">
                 <span className="text-black/60 dark:text-white/60">Loan Amount</span>
                 <span className="font-bold text-black dark:text-white">{formatCurrency(loanAmount)}</span>
@@ -188,44 +287,49 @@ export default function EmiCalculator({
             </div>
           </div>
 
-          <div className="space-y-3 pt-2">
-            <button
-              onClick={() => setIsModalOpen(true)}
-              className="w-full py-3.5 bg-[#6CAFBF] text-black font-bold text-xs tracking-widest uppercase rounded-sm hover:bg-black hover:text-white transition-colors text-center block"
-            >
-              Speak with Home Loan Advisor
-            </button>
-            <a
-              href="https://wa.me/918237277775?text=Hi%20Mayuri%20Landmarks%2C%20I%20calculated%20my%20EMI%20for%20a%20property%20and%20would%20like%20to%20discuss%20pre-approved%20loan%20offers."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full py-3 border border-black/15 dark:border-white/15 text-black dark:text-white font-bold text-xs tracking-widest uppercase rounded-sm hover:border-[#6CAFBF] hover:text-[#6CAFBF] transition-colors text-center block"
-            >
-              Get WhatsApp Loan Offers
-            </a>
-          </div>
-        </div>
-      </div>
+          {/* Interactive Tax Savings & Financial Benefits Card (Replaces the 2 CTA buttons) */}
+          <div className="pt-2">
+            <div className="bg-white dark:bg-[#1A1A1A] border border-black/10 dark:border-white/10 rounded-sm p-4 space-y-3 transition-all duration-300 hover:border-[#6CAFBF]">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="text-base">💡</span>
+                  <span className="text-xs font-bold uppercase tracking-wider text-black dark:text-white">
+                    Estimated Tax Savings
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setShowTaxBreakdown(!showTaxBreakdown)}
+                  className="text-[10px] font-bold text-[#6CAFBF] uppercase tracking-widest hover:underline"
+                >
+                  {showTaxBreakdown ? 'Hide Info ▲' : 'View Details ▼'}
+                </button>
+              </div>
 
-      {/* Modal Trigger */}
-      {isModalOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md overflow-y-auto">
-          <div className="relative w-full max-w-4xl bg-[#F5F5F0] dark:bg-[#0A0A0A] rounded-md overflow-hidden shadow-2xl my-8">
-            <button
-              onClick={() => setIsModalOpen(false)}
-              className="absolute top-4 right-4 z-50 text-black dark:text-white bg-black/10 dark:bg-white/10 hover:bg-black/20 p-3 rounded-full transition-colors"
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
-            </button>
-            <div className="p-4 md:p-8">
-              <ScheduleSiteVisit projectName={projectName} />
+              <div className="text-xs font-semibold text-black/80 dark:text-white/80 leading-relaxed">
+                Save up to <span className="font-extrabold text-[#6CAFBF]">{formatCurrency(totalTaxSavingYearly)}</span>/yr on income tax under Sec 24(b) & 80C.
+              </div>
+
+              {showTaxBreakdown && (
+                <div className="pt-2.5 border-t border-black/10 dark:border-white/10 space-y-2 text-[11px] animate-in fade-in duration-300">
+                  <div className="flex justify-between">
+                    <span className="text-black/60 dark:text-white/60">Sec 24(b) Interest Deduction</span>
+                    <span className="font-bold text-emerald-600 dark:text-emerald-400">Up to ₹2,00,000 / yr</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-black/60 dark:text-white/60">Sec 80C Principal Deduction</span>
+                    <span className="font-bold text-emerald-600 dark:text-emerald-400">Up to ₹1,50,000 / yr</span>
+                  </div>
+                  <p className="text-[10px] text-black/40 dark:text-white/40 italic pt-1">
+                    *Applicable under the Old Tax Regime for self-occupied residential property.
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </div>
-      )}
+      </div>
     </section>
   );
 }
+

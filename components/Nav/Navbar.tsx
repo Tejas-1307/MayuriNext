@@ -87,8 +87,10 @@ const Navbar = () => {
             </div>
           </button>
 
-          <button
-            onClick={() => scrollTo('section-[#section-contact]')}
+          <a
+            href="https://maps.google.com/?q=Mayuri+Adhinathpuram+Pune"
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden md:flex group relative text-[#111111] dark:text-white border border-[#8BC7D8] hover:border-transparent hover:bg-[#8BC7D8] hover:text-[#111111] px-6 py-3 rounded-full overflow-hidden transition-all duration-300 hover:scale-[1.03] font-sans font-bold text-xs tracking-wider"
           >
             <div className="opacity-0 flex items-center gap-2 pointer-events-none">
@@ -103,7 +105,7 @@ const Navbar = () => {
               <span className="whitespace-nowrap">Location</span>{' '}
               <LocateIcon size={14} />
             </div>
-          </button>
+          </a>
 
           <button
             onClick={toggleTheme}

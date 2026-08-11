@@ -28,6 +28,7 @@ export interface ProjectItemData {
   images?: string[];
   desc?: string;
   brochure?: string;
+  mapUrl?: string;
 }
 
 export const allProjects: ProjectItemData[] = [
@@ -43,6 +44,7 @@ export const allProjects: ProjectItemData[] = [
     img: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=1800&auto=format&fit=crop',
     thumb: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=600&auto=format&fit=crop',
     size: 'large',
+    mapUrl: 'https://share.google/rFcOlEVYlAqw38F4f',
     desc: 'Mayuri Infinity represents the zenith of contemporary residential design, offering residents an unparalleled panoramic living experience in the heart of Pune. Meticulously crafted with a focus on biophilic elements, natural light, and cross-ventilation, each residence is a sanctuary of peace.',
     brochure: '/brochure-mayuri-infinity.pdf',
   },
@@ -59,6 +61,7 @@ export const allProjects: ProjectItemData[] = [
     img: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1800&auto=format&fit=crop',
     thumb: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=600&auto=format&fit=crop',
     size: 'small',
+    mapUrl: 'https://share.google/1B1ipVeSLLXqhjj5d',
     desc: 'Setting a rigorous new benchmark for corporate architecture, Mayuri Optimum integrates sustainable energy practices with bold, geometric facade design to empower modern businesses. Bathing office suites in diffuse natural sunlight.',
     brochure: '/brochure-mayuri-optimum.pdf',
   },
@@ -74,6 +77,7 @@ export const allProjects: ProjectItemData[] = [
     img: 'https://images.unsplash.com/photo-1460317442991-0ec209397118?q=80&w=1800&auto=format&fit=crop',
     thumb: 'https://images.unsplash.com/photo-1460317442991-0ec209397118?q=80&w=600&auto=format&fit=crop',
     size: 'small',
+    mapUrl: 'https://share.google/awsbUAQbGBkWBkRwN',
     desc: 'An intimate enclave of boutique luxury apartments tailored strictly for families seeking an oasis of calm without compromising urban connectivity. Designed with sweeping ergonomic layouts and private foyer entrances.',
     brochure: '/brochure-mayuri-residency.pdf',
   },
@@ -89,6 +93,7 @@ export const allProjects: ProjectItemData[] = [
     video: 'https://www.mayurilandmarks.com/images/sliders/FlatNew1.mp4',
     img: 'https://www.mayurilandmarks.com/images/sliders/slide3.jpg',
     thumb: 'https://www.mayurilandmarks.com/images/sliders/slide3.jpg',
+    mapUrl: 'https://maps.google.com/?q=Mayuri+Adhinathpuram+Pune',
     images: [
       'https://www.mayurilandmarks.com/images/sliders/slide3.jpg',
       'https://www.mayurilandmarks.com/images/sliders/slide2.jpg',

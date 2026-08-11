@@ -980,7 +980,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ id }) => {
       <LocationMap
         projectName={project.name}
         address={
-          project.name === 'Mayuri Adhinathpuram'
+          project.name === 'Mayuri Adhinathpuram' || project.name === 'Adhinathpuram'
             ? '53/8, Wadachi Wadi Road, Undri, Pune – 411 060'
             : project.name === 'Optimum'
               ? 'Mayuri Optimum, CWX6+45F, Pisoli Rd, Pisoli, Pune, Maharashtra 411060'
@@ -989,17 +989,14 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ id }) => {
                 : `${project.name}, ${project.location}`
         }
         googleMapsUrl={
-          project.name === 'Infinity'
-            ? 'https://www.google.com/maps/place/Mayuri+Infinity/@18.4519829,73.9224519,17z/data=!3m1!4b1!4m6!3m5!1s0x3bc2eb2cf6eb98b5:0xb83d5d59d026ea1!8m2!3d18.4519829!4d73.9250268!16s%2Fg%2F11jlh3t9sj?hl=en-IN&entry=ttu&g_ep=EgoyMDI2MDgwNS4xIKXMDSoASAFQAw%3D%3D'
-            : `https://maps.google.com/?q=${encodeURIComponent(
-                project.name === 'Mayuri Adhinathpuram'
-                  ? '53/8, Wadachi Wadi Road, Undri, Pune – 411 060'
-                  : project.name === 'Optimum'
-                    ? 'Mayuri Optimum, CWX6+45F, Pisoli Rd, Pisoli, Pune, Maharashtra 411060'
-                    : project.name === 'Residency'
-                      ? 'MAYURI RESIDENCY, Autadwadi Handewadi, Handewadi, Pune, Maharashtra 412308'
-                      : `${project.name}, ${project.location}`
-              )}`
+          project.mapUrl ||
+          (project.name === 'Infinity'
+            ? 'https://share.google/rFcOlEVYlAqw38F4f'
+            : project.name === 'Optimum'
+            ? 'https://share.google/1B1ipVeSLLXqhjj5d'
+            : project.name === 'Residency'
+            ? 'https://share.google/awsbUAQbGBkWBkRwN'
+            : 'https://maps.google.com/?q=Mayuri+Adhinathpuram+Pune')
         }
         subheading={`Situated in one of Pune's fastest-growing neighborhoods, ${project.name} offers seamless connectivity while preserving the calm and comfort of residential living.`}
       />

@@ -276,7 +276,7 @@ export default function BookingForm({
   `;
 
   const inputClass = (name: string) => `
-    w-full bg-transparent border-b-2 pl-0 pt-6 pb-3 text-black dark:text-white text-base font-medium
+    w-full bg-transparent border-b-2 pl-0 pt-4 pb-1.5 text-black dark:text-white text-sm md:text-base font-medium
     placeholder-transparent outline-none transition-all duration-300 peer rounded-none
     ${
       errors[name] && touched[name]
@@ -291,14 +291,14 @@ export default function BookingForm({
     absolute left-0 text-black/40 dark:text-white/40 font-medium tracking-wide transition-all duration-300 pointer-events-none
     ${
       focused === name || (formData as any)[name]
-        ? 'top-0 text-xs text-[#6CAFBF] font-bold tracking-[0.15em] uppercase'
-        : 'top-6 text-sm md:text-base'
+        ? 'top-0 text-[10px] text-[#6CAFBF] font-bold tracking-[0.15em] uppercase'
+        : 'top-4 text-xs md:text-sm'
     }
     ${errors[name] && touched[name] ? 'text-red-500 dark:text-red-400' : ''}
   `;
 
   return (
-    <div className={`w-full max-w-[560px] mx-auto text-black dark:text-white ${className}`}>
+    <div className={`w-full max-w-4xl mx-auto text-black dark:text-white ${className}`}>
       {/* Optional Custom Header */}
       {title && (
         <div className="mb-6 text-left space-y-2">
@@ -389,7 +389,7 @@ export default function BookingForm({
         </div>
       ) : (
         /* FORM STATE */
-        <form onSubmit={handleSubmit} noValidate className="space-y-6">
+        <form onSubmit={handleSubmit} noValidate className="space-y-4">
           {/* Honeypot field - anti spam */}
           <input
             type="text"
@@ -402,13 +402,13 @@ export default function BookingForm({
           />
 
           {serverError && (
-            <div className="p-4 bg-red-500/10 border border-red-500/30 text-red-500 text-xs font-semibold rounded-sm">
+            <div className="p-3 bg-red-500/10 border border-red-500/30 text-red-500 text-xs font-semibold rounded-sm">
               {serverError}
             </div>
           )}
 
-          {/* Grid 1: Name & Phone (2-cols on desktop, 1-col on mobile) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Row 1: Name, Phone, Email (3-cols on desktop/tablet, 1-col on mobile) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {/* Name */}
             <div className={getInputWrapperClass('full_name')}>
               <div className="relative">
@@ -422,7 +422,7 @@ export default function BookingForm({
                   onChange={handleChange}
                   onFocus={() => setFocused('full_name')}
                   onBlur={() => handleBlur('full_name')}
-                  placeholder="Full Name"
+                  placeholder=""
                   className={inputClass('full_name')}
                 />
                 <label htmlFor={`name-${formId}`} className={labelClass('full_name')}>
@@ -430,7 +430,7 @@ export default function BookingForm({
                 </label>
               </div>
               {errors.full_name && touched.full_name && (
-                <p className="text-xs text-red-500 dark:text-red-400 mt-1 font-medium">
+                <p className="text-[11px] text-red-500 dark:text-red-400 mt-1 font-medium">
                   {errors.full_name}
                 </p>
               )}
@@ -449,7 +449,7 @@ export default function BookingForm({
                   onChange={handleChange}
                   onFocus={() => setFocused('phone')}
                   onBlur={() => handleBlur('phone')}
-                  placeholder="Phone Number"
+                  placeholder=""
                   className={inputClass('phone')}
                 />
                 <label htmlFor={`phone-${formId}`} className={labelClass('phone')}>
@@ -457,15 +457,12 @@ export default function BookingForm({
                 </label>
               </div>
               {errors.phone && touched.phone && (
-                <p className="text-xs text-red-500 dark:text-red-400 mt-1 font-medium">
+                <p className="text-[11px] text-red-500 dark:text-red-400 mt-1 font-medium">
                   {errors.phone}
                 </p>
               )}
             </div>
-          </div>
 
-          {/* Grid 2: Email & Project */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Email */}
             <div className={getInputWrapperClass('email')}>
               <div className="relative">
@@ -479,7 +476,7 @@ export default function BookingForm({
                   onChange={handleChange}
                   onFocus={() => setFocused('email')}
                   onBlur={() => handleBlur('email')}
-                  placeholder="Email Address"
+                  placeholder=""
                   className={inputClass('email')}
                 />
                 <label htmlFor={`email-${formId}`} className={labelClass('email')}>
@@ -487,12 +484,15 @@ export default function BookingForm({
                 </label>
               </div>
               {errors.email && touched.email && (
-                <p className="text-xs text-red-500 dark:text-red-400 mt-1 font-medium">
+                <p className="text-[11px] text-red-500 dark:text-red-400 mt-1 font-medium">
                   {errors.email}
                 </p>
               )}
             </div>
+          </div>
 
+          {/* Row 2: Project Select & Date Input */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Project Select */}
             <div className="relative w-full">
               <select
@@ -503,7 +503,7 @@ export default function BookingForm({
                 onChange={handleChange}
                 onFocus={() => setFocused('project_name')}
                 onBlur={() => handleBlur('project_name')}
-                className={`w-full bg-transparent border-b-2 pt-6 pb-3 text-black dark:text-white text-base font-medium outline-none transition-all duration-300 cursor-pointer ${
+                className={`w-full bg-transparent border-b-2 pt-4 pb-1.5 text-black dark:text-white text-sm md:text-base font-medium outline-none transition-all duration-300 cursor-pointer ${
                   autoFilled ? 'opacity-80 cursor-not-allowed border-[#6CAFBF]' : 'border-black/15 dark:border-white/15 hover:border-black/30 dark:hover:border-white/30'
                 }`}
                 style={{ WebkitAppearance: 'none', background: 'transparent' }}
@@ -514,42 +514,13 @@ export default function BookingForm({
                   </option>
                 ))}
               </select>
-              <label htmlFor={`project-${formId}`} className="absolute left-0 top-0 text-xs text-[#6CAFBF] font-bold tracking-[0.15em] uppercase pointer-events-none">
+              <label htmlFor={`project-${formId}`} className="absolute left-0 top-0 text-[10px] text-[#6CAFBF] font-bold tracking-[0.15em] uppercase pointer-events-none">
                 Interested Project {autoFilled && '(Selected)'}
               </label>
             </div>
-          </div>
 
-          {/* Interested Unit Type (Selectable Chips) */}
-          <div className="space-y-3 pt-2">
-            <span className="text-xs font-bold text-black/50 dark:text-white/50 tracking-widest uppercase block">
-              Interested Unit Configuration
-            </span>
-            <div className="flex flex-wrap gap-2.5">
-              {UNIT_TYPES.map((unit) => {
-                const active = formData.unit_type === unit;
-                return (
-                  <button
-                    key={unit}
-                    type="button"
-                    onClick={() => setFormData((prev) => ({ ...prev, unit_type: unit }))}
-                    className={`px-4 py-2 rounded-full text-xs font-bold uppercase transition-all duration-300 border ${
-                      active
-                        ? 'bg-[#6CAFBF] text-black border-[#6CAFBF] shadow-sm scale-105'
-                        : 'bg-black/5 dark:bg-white/5 text-black/70 dark:text-white/70 border-black/10 dark:border-white/10 hover:border-[#6CAFBF]'
-                    }`}
-                  >
-                    {unit}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Site Visit Specific: Date & Time Chips */}
-          {formMode === 'site-visit' && (
-            <div className="space-y-6 pt-2 animate-in fade-in duration-300">
-              {/* Date Input */}
+            {/* Visit Date */}
+            {formMode === 'site-visit' && (
               <div className={getInputWrapperClass('visit_date')}>
                 <div className="relative">
                   <input
@@ -562,25 +533,60 @@ export default function BookingForm({
                     onChange={handleChange}
                     onFocus={() => setFocused('visit_date')}
                     onBlur={() => handleBlur('visit_date')}
-                    className={inputClass('visit_date')}
+                    className={`w-full bg-transparent border-b-2 pl-0 pt-4 pb-1.5 text-black dark:text-white text-sm md:text-base font-medium outline-none transition-all duration-300 ${
+                      errors.visit_date && touched.visit_date
+                        ? 'border-red-500 dark:border-red-400'
+                        : 'border-black/15 dark:border-white/15 hover:border-black/30 dark:hover:border-white/30'
+                    }`}
                   />
-                  <label htmlFor={`date-${formId}`} className="absolute left-0 top-0 text-xs text-[#6CAFBF] font-bold tracking-[0.15em] uppercase pointer-events-none">
+                  <label htmlFor={`date-${formId}`} className="absolute left-0 top-0 text-[10px] text-[#6CAFBF] font-bold tracking-[0.15em] uppercase pointer-events-none">
                     Preferred Visit Date *
                   </label>
                 </div>
                 {errors.visit_date && touched.visit_date && (
-                  <p className="text-xs text-red-500 dark:text-red-400 mt-1 font-medium">
+                  <p className="text-[11px] text-red-500 dark:text-red-400 mt-1 font-medium">
                     {errors.visit_date}
                   </p>
                 )}
               </div>
+            )}
+          </div>
 
-              {/* Time Slots Chips */}
-              <div className="space-y-3">
-                <span className="text-xs font-bold text-black/50 dark:text-white/50 tracking-widest uppercase block">
+          {/* Row 3: Unit Configuration (Left) & Time Slot (Right) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start pt-1">
+            {/* Interested Unit Type */}
+            <div className="space-y-2">
+              <span className="text-[10px] font-bold text-black/50 dark:text-white/50 tracking-widest uppercase block">
+                Interested Unit Configuration
+              </span>
+              <div className="flex flex-wrap gap-2">
+                {UNIT_TYPES.map((unit) => {
+                  const active = formData.unit_type === unit;
+                  return (
+                    <button
+                      key={unit}
+                      type="button"
+                      onClick={() => setFormData((prev) => ({ ...prev, unit_type: unit }))}
+                      className={`px-3 py-1.5 rounded-full text-xs font-bold uppercase transition-all duration-300 border ${
+                        active
+                          ? 'bg-[#6CAFBF] text-black border-[#6CAFBF] shadow-sm scale-105'
+                          : 'bg-black/5 dark:bg-white/5 text-black/70 dark:text-white/70 border-black/10 dark:border-white/10 hover:border-[#6CAFBF]'
+                      }`}
+                    >
+                      {unit}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Time Slots */}
+            {formMode === 'site-visit' && (
+              <div className="space-y-2">
+                <span className="text-[10px] font-bold text-black/50 dark:text-white/50 tracking-widest uppercase block">
                   Preferred Time Slot
                 </span>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                <div className="grid grid-cols-2 gap-2">
                   {TIME_SLOTS.map((slot) => {
                     const active = formData.time_slot === slot.id;
                     return (
@@ -588,7 +594,7 @@ export default function BookingForm({
                         key={slot.id}
                         type="button"
                         onClick={() => setFormData((prev) => ({ ...prev, time_slot: slot.id }))}
-                        className={`px-3 py-2.5 rounded-sm text-xs font-bold text-center uppercase transition-all duration-300 border ${
+                        className={`px-2.5 py-1.5 rounded-sm text-[11px] font-bold text-center uppercase transition-all duration-300 border ${
                           active
                             ? 'bg-black text-white dark:bg-white dark:text-black border-black dark:border-white shadow-sm'
                             : 'bg-black/5 dark:bg-white/5 text-black/70 dark:text-white/70 border-black/10 dark:border-white/10 hover:border-black/30'
@@ -600,43 +606,43 @@ export default function BookingForm({
                   })}
                 </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
 
-          {/* Optional Message / Notes */}
+          {/* Row 4: Optional Message / Notes */}
           <div className="relative pt-2">
-            <textarea
+            <input
+              type="text"
               name="message"
               id={`msg-${formId}`}
-              rows={2}
               value={formData.message}
               onChange={handleChange}
               onFocus={() => setFocused('message')}
               onBlur={() => setFocused(null)}
-              placeholder="Additional Notes or Specific Requirements (Optional)"
-              className="w-full bg-transparent border-b-2 border-black/15 dark:border-white/15 focus:border-[#6CAFBF] pt-6 pb-2 text-black dark:text-white text-sm outline-none transition-all duration-300 resize-none peer"
+              placeholder=""
+              className="w-full bg-transparent border-b-2 border-black/15 dark:border-white/15 focus:border-[#6CAFBF] pt-4 pb-1.5 text-black dark:text-white text-sm outline-none transition-all duration-300 peer"
             />
             <label
               htmlFor={`msg-${formId}`}
               className={`absolute left-0 text-black/40 dark:text-white/40 font-medium tracking-wide transition-all duration-300 pointer-events-none ${
                 focused === 'message' || formData.message
-                  ? 'top-0 text-xs text-[#6CAFBF] font-bold tracking-[0.15em] uppercase'
-                  : 'top-6 text-sm'
+                  ? 'top-0 text-[10px] text-[#6CAFBF] font-bold tracking-[0.15em] uppercase'
+                  : 'top-4 text-xs md:text-sm'
               }`}
             >
               Additional Notes (Optional)
             </label>
           </div>
 
-          {/* SUBMIT BUTTON */}
+          {/* Row 5: SUBMIT BUTTON */}
           <button
             type="submit"
             disabled={loading}
-            className="w-full relative group overflow-hidden bg-[#6CAFBF] hover:bg-[#7AB6C7] text-black font-extrabold text-xs md:text-sm tracking-[0.25em] uppercase py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3 disabled:opacity-75 disabled:cursor-not-allowed mt-4"
+            className="w-full relative group overflow-hidden bg-[#6CAFBF] hover:bg-[#7AB6C7] text-black font-extrabold text-xs md:text-sm tracking-[0.2em] uppercase py-3.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-75 disabled:cursor-not-allowed mt-2"
           >
             {loading ? (
               <>
-                <Loader2 size={18} className="animate-spin text-black" />
+                <Loader2 size={16} className="animate-spin text-black" />
                 <span>Processing...</span>
               </>
             ) : (
@@ -647,7 +653,7 @@ export default function BookingForm({
             )}
           </button>
 
-          <p className="text-[10px] text-center text-black/40 dark:text-white/40 uppercase tracking-widest font-mono">
+          <p className="text-[10px] text-center text-black/40 dark:text-white/40 uppercase tracking-widest font-mono pt-1">
             🔒 100% Secure & Confidential • Privacy Assured
           </p>
         </form>

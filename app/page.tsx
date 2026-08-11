@@ -25,7 +25,7 @@ export default function HomePage() {
         setLoading(true);
         setIsFirstVisit(true);
       }
-    } catch (e) {
+    } catch {
       // In case sessionStorage is blocked/unavailable
       setLoading(false);
     }
@@ -34,7 +34,9 @@ export default function HomePage() {
   const handleLoaderComplete = () => {
     try {
       sessionStorage.setItem('mayuri_has_loaded', 'true');
-    } catch (e) {}
+    } catch {
+      // Ignore storage errors
+    }
     setLoading(false);
   };
 

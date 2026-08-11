@@ -13,6 +13,7 @@ export interface ProjectItem {
   video?: string;
   images: string[];
   desc: string;
+  mapUrl?: string;
 }
 
 export const allProjectsData: ProjectItem[] = [
@@ -28,6 +29,7 @@ export const allProjectsData: ProjectItem[] = [
     img: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=1800&auto=format&fit=crop',
     thumb: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=600&auto=format&fit=crop',
     size: 'large',
+    mapUrl: 'https://share.google/rFcOlEVYlAqw38F4f',
     images: [
       'https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=1800&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1800&auto=format&fit=crop',
@@ -47,6 +49,7 @@ export const allProjectsData: ProjectItem[] = [
     video: '/assets/Flats_Img/Mayuri Optimum Walkthrough.mp4',
     img: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1800&auto=format&fit=crop',
     thumb: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=600&auto=format&fit=crop',
+    mapUrl: 'https://share.google/1B1ipVeSLLXqhjj5d',
     images: [
       'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1800&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1800&auto=format&fit=crop',
@@ -65,6 +68,7 @@ export const allProjectsData: ProjectItem[] = [
     units: '80+ Units',
     img: 'https://images.unsplash.com/photo-1460317442991-0ec209397118?q=80&w=1800&auto=format&fit=crop',
     thumb: 'https://images.unsplash.com/photo-1460317442991-0ec209397118?q=80&w=600&auto=format&fit=crop',
+    mapUrl: 'https://share.google/awsbUAQbGBkWBkRwN',
     images: [
       'https://images.unsplash.com/photo-1460317442991-0ec209397118?q=80&w=1800&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=1800&auto=format&fit=crop',
@@ -83,6 +87,7 @@ export const allProjectsData: ProjectItem[] = [
     video: 'https://www.mayurilandmarks.com/images/sliders/FlatNew1.mp4',
     img: 'https://www.mayurilandmarks.com/images/sliders/slide3.jpg',
     thumb: 'https://www.mayurilandmarks.com/images/sliders/slide3.jpg',
+    mapUrl: 'https://maps.google.com/?q=Mayuri+Adhinathpuram+Pune',
     images: [
       'https://www.mayurilandmarks.com/images/sliders/slide3.jpg',
       'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1800&auto=format&fit=crop',
