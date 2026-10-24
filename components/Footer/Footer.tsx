@@ -18,7 +18,6 @@ const navLinks = [
   { label: 'Home', id: 'section-home' },
   { label: 'Projects', id: 'section-projects' },
   { label: 'Amenities', id: 'section-amenities' },
-  { label: 'Testimonials', id: 'section-testimonials' },
   { label: 'Services', id: 'section-services' },
   { label: 'Contact', id: 'section-contact' },
 ];
@@ -148,9 +147,9 @@ const Footer: React.FC = () => {
         <h2
           ref={bigTextRef}
           className="font-[magtis] uppercase font-extrabold leading-none tracking-tighter text-black/[0.07] dark:text-white/[0.07] select-none pointer-events-none whitespace-nowrap transition-colors duration-1000"
-          style={{ fontSize: 'clamp(4rem, 14vw, 18rem)' }}
+          style={{ fontSize: 'clamp(2rem, 10.80vw, 15rem)' }}
         >
-          Adhinathpuram
+          MAYURI LANDMARKS
         </h2>
       </div>
 

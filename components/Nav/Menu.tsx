@@ -26,9 +26,8 @@ const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
     { title: 'Home', num: '01', href: 'section-home' },
     { title: 'Projects', num: '02', href: 'section-projects' },
     { title: 'Amenities', num: '03', href: 'section-amenities' },
-    { title: 'Testimonials', num: '04', href: 'section-testimonials' },
-    { title: 'Services', num: '05', href: 'section-services' },
-    { title: 'Contact', num: '06', href: 'section-contact' },
+    { title: 'Services', num: '04', href: 'section-services' },
+    { title: 'Contact', num: '05', href: 'section-contact' },
   ];
 
   const handleNavClick = (href: string) => {
