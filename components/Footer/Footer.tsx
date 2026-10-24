@@ -168,13 +168,6 @@ const Footer: React.FC = () => {
           </p>
 
           <div className="flex flex-wrap items-center gap-3">
-            <div className="flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1.5 rounded-full text-[11px] font-bold text-emerald-600 dark:text-emerald-400">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-              </svg>
-              <span>MAHA RERA: P52100049330</span>
-            </div>
-
             <div className="flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/30 px-3 py-1.5 rounded-full text-[11px] font-bold text-amber-500">
               <span>★ 4.8 / 5.0</span>
               <span className="text-black/40 dark:text-white/40 font-medium">(500+ Google Reviews)</span>
@@ -246,22 +239,43 @@ const Footer: React.FC = () => {
                   </svg>
                 ),
               },
-            ].map(({ name, icon }) => (
-              <a
-                key={name}
-                href={
-                  name === 'Instagram'
-                    ? 'https://www.instagram.com/mayurilandmarks?igsh=MzFpNm82eHQ0ZnVo'
-                    : '#'
-                }
-                target={name === 'Instagram' ? '_blank' : undefined}
-                rel={name === 'Instagram' ? 'noopener noreferrer' : undefined}
-                aria-label={name}
-                className="w-10 h-10 rounded-full border border-black/15 flex items-center justify-center text-black/50 hover:bg-black hover:text-white hover:border-black transition-all duration-400"
-              >
-                {icon}
-              </a>
-            ))}
+            ].map(({ name, icon }) => {
+              const palette =
+                name === 'Instagram'
+                  ? {
+                      icon: 'text-[#E1306C]',
+                      hover: 'hover:bg-gradient-to-br hover:from-[#F58529] hover:via-[#DD2A7B] hover:to-[#8134AF] hover:text-white',
+                      ring: 'hover:border-transparent',
+                    }
+                  : name === 'LinkedIn'
+                  ? {
+                      icon: 'text-[#0A66C2]',
+                      hover: 'hover:bg-[#0A66C2] hover:text-white',
+                      ring: 'hover:border-[#0A66C2]',
+                    }
+                  : {
+                      icon: 'text-[#1877F2]',
+                      hover: 'hover:bg-[#1877F2] hover:text-white',
+                      ring: 'hover:border-[#1877F2]',
+                    };
+
+              return (
+                <a
+                  key={name}
+                  href={
+                    name === 'Instagram'
+                      ? 'https://www.instagram.com/mayurilandmarks?igsh=MzFpNm82eHQ0ZnVo'
+                      : '#'
+                  }
+                  target={name === 'Instagram' ? '_blank' : undefined}
+                  rel={name === 'Instagram' ? 'noopener noreferrer' : undefined}
+                  aria-label={name}
+                  className={`w-10 h-10 rounded-full border border-black/15 bg-white flex items-center justify-center transition-all duration-400 ${palette.icon} ${palette.hover} ${palette.ring} hover:shadow-md`}
+                >
+                  {icon}
+                </a>
+              );
+            })}
           </div>
         </div>
 

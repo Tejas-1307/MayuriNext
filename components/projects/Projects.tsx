@@ -246,10 +246,10 @@ const Projects: React.FC = () => {
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`relative px-6 py-3 text-xs md:text-sm font-bold tracking-widest uppercase transition-all duration-500 rounded-full ${
+                className={`relative px-6 py-3 text-[11px] md:text-sm font-black tracking-[0.18em] uppercase transition-all duration-500 rounded-full ${
                   activeTab === tab
-                    ? 'bg-black text-white dark:bg-white dark:text-black shadow-lg'
-                    : 'bg-transparent text-black/50 dark:text-white/50 hover:text-black dark:hover:text-white border border-black/15 dark:border-white/15'
+                    ? 'bg-black text-white dark:bg-white dark:text-black shadow-lg ring-2 ring-black/10 dark:ring-white/20'
+                    : 'bg-transparent text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white border border-black/15 dark:border-white/15'
                 }`}
               >
                 {tab === 'all'
@@ -260,8 +260,8 @@ const Projects: React.FC = () => {
                   ? 'Ongoing'
                   : 'Upcoming'}
                 <span
-                  className={`ml-2 text-xs font-bold transition-colors duration-300 ${
-                    activeTab === tab ? 'text-[#6CAFBF]' : 'text-current opacity-50'
+                  className={`ml-2 text-[10px] font-black transition-colors duration-300 ${
+                    activeTab === tab ? 'text-[#6CAFBF]' : 'text-current opacity-70'
                   }`}
                 >
                   {tab === 'all'
@@ -333,17 +333,25 @@ const Projects: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
               {/* Status Badge */}
-              <div className="absolute top-4 left-4 flex items-center gap-2 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10">
+              <div
+                className={`absolute top-4 left-4 flex items-center gap-2.5 rounded-full border px-3 py-1.5 shadow-lg backdrop-blur-sm ${
+                  project.status === 'completed'
+                    ? 'border-emerald-300/70 bg-emerald-500/90 text-white'
+                    : project.status === 'ongoing'
+                    ? 'border-cyan-200/70 bg-[#6CAFBF] text-slate-950'
+                    : 'border-amber-200/70 bg-amber-400/90 text-[#2d2200]'
+                }`}
+              >
                 <div
-                  className={`w-2 h-2 rounded-full animate-pulse ${
+                  className={`h-2.5 w-2.5 rounded-full ring-2 ring-white/70 animate-pulse ${
                     project.status === 'completed'
-                      ? 'bg-emerald-400'
+                      ? 'bg-emerald-100'
                       : project.status === 'ongoing'
-                      ? 'bg-[#6CAFBF]'
-                      : 'bg-amber-400'
+                      ? 'bg-slate-950'
+                      : 'bg-amber-950'
                   }`}
                 />
-                <span className="text-white text-[10px] tracking-widest uppercase font-bold">
+                <span className="text-[10px] md:text-[11px] tracking-[0.22em] uppercase font-black leading-none">
                   {project.status === 'completed'
                     ? 'Completed'
                     : project.status === 'ongoing'

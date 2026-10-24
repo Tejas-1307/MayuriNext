@@ -187,23 +187,6 @@ export default function EmiCalculator({
               </div>
             </div>
           </div>
-
-          <div className="space-y-3 pt-2">
-            <button
-              onClick={() => setIsModalOpen(true)}
-              className="w-full py-3.5 bg-[#6CAFBF] text-black font-bold text-xs tracking-widest uppercase rounded-sm hover:bg-black hover:text-white transition-colors text-center block"
-            >
-              Speak with Home Loan Advisor
-            </button>
-            <a
-              href="https://wa.me/918237277775?text=Hi%20Mayuri%20Landmarks%2C%20I%20calculated%20my%20EMI%20for%20a%20property%20and%20would%20like%20to%20discuss%20pre-approved%20loan%20offers."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full py-3 border border-black/15 dark:border-white/15 text-black dark:text-white font-bold text-xs tracking-widest uppercase rounded-sm hover:border-[#6CAFBF] hover:text-[#6CAFBF] transition-colors text-center block"
-            >
-              Get WhatsApp Loan Offers
-            </a>
-          </div>
         </div>
       </div>
 
