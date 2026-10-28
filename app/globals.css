@@ -11,6 +11,12 @@
 /* Enable class-based manual dark mode toggling */
 @custom-variant dark (&:where(.dark, .dark *));
 
+.dark {
+  --color-brand-bg: #111111;
+  --color-brand-dark: #ffffff;
+  color-scheme: dark;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 12vh;

@@ -18,7 +18,6 @@ const navLinks = [
   { label: 'Home', id: 'section-home' },
   { label: 'Projects', id: 'section-projects' },
   { label: 'Amenities', id: 'section-amenities' },
-  { label: 'Testimonials', id: 'section-testimonials' },
   { label: 'Services', id: 'section-services' },
   { label: 'Contact', id: 'section-contact' },
 ];
@@ -124,16 +123,16 @@ const Footer: React.FC = () => {
                     <span className="text-[#6CAFBF] text-xs tracking-[0.3em] uppercase font-bold">
                       Service Insight
                     </span>
-                    <h3 className="text-3xl md:text-4xl font-extrabold uppercase leading-none">
+                    <h3 className="text-3xl md:text-4xl font-extrabold uppercase leading-none text-black dark:text-white">
                       {activeService}
                     </h3>
                   </div>
-                  <p className="text-black/60 text-base md:text-lg font-medium leading-relaxed">
+                  <p className="text-black/60 dark:text-white/70 text-base md:text-lg font-medium leading-relaxed">
                     {servicesData[activeService].desc}
                   </p>
                   <button
                     onClick={() => setActiveService(null)}
-                    className="mt-4 w-fit px-8 py-4 bg-black text-white text-xs tracking-[0.2em] uppercase font-bold hover:bg-[#6CAFBF] hover:text-black transition-all duration-400"
+                    className="mt-4 w-fit px-8 py-4 bg-black text-white dark:bg-white dark:text-black text-xs tracking-[0.2em] uppercase font-bold hover:bg-[#6CAFBF] dark:hover:bg-[#6CAFBF] hover:text-black dark:hover:text-black transition-all duration-400"
                   >
                     Close Preview
                   </button>
@@ -148,9 +147,9 @@ const Footer: React.FC = () => {
         <h2
           ref={bigTextRef}
           className="font-[magtis] uppercase font-extrabold leading-none tracking-tighter text-black/[0.07] dark:text-white/[0.07] select-none pointer-events-none whitespace-nowrap transition-colors duration-1000"
-          style={{ fontSize: 'clamp(4rem, 14vw, 18rem)' }}
+          style={{ fontSize: 'clamp(3.5rem, 11vw, 15rem)' }}
         >
-          Adhinathpuram
+          Mayuri Landmarks
         </h2>
       </div>
 
@@ -160,7 +159,7 @@ const Footer: React.FC = () => {
       >
         <div className="flex flex-col gap-8 footer-item">
           <div className="flex flex-col gap-3">
-            <h3 className="font-[magtis] uppercase font-extrabold text-2xl md:text-3xl tracking-tight leading-none">
+            <h3 className="font-[magtis] uppercase font-extrabold text-2xl md:text-3xl tracking-tight leading-none text-black dark:text-white">
               Mayuri<br />
               <span className="text-[#6CAFBF]">Landmarks LLP</span>
             </h3>
@@ -183,17 +182,20 @@ const Footer: React.FC = () => {
           </div>
           </div>
 
-          <div className="flex items-center gap-3 border border-black/10 rounded-sm px-4 py-3 w-fit">
+          <div className="flex items-center gap-3 border border-black/10 dark:border-white/15 rounded-sm px-4 py-3 w-fit">
             <div className="w-2 h-2 rounded-full bg-[#6CAFBF] animate-pulse" />
-            <span className="text-black/60 text-xs tracking-[0.2em] uppercase font-bold">
+            <span className="text-black/60 dark:text-white/70 text-xs tracking-[0.2em] uppercase font-bold">
               MAHA RERA Certified
             </span>
           </div>
 
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-4">
             {[
               {
                 name: 'Instagram',
+                href: 'https://www.instagram.com/mayurilandmarks?obrf=cGswbDVnMTJ0MjJ1',
+                styles:
+                  'text-[#E4405F] border-[#E4405F]/30 bg-[#E4405F]/10 hover:bg-[#E4405F] hover:text-white hover:border-[#E4405F]',
                 icon: (
                   <svg
                     width="18"
@@ -201,7 +203,7 @@ const Footer: React.FC = () => {
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    strokeWidth="1.5"
+                    strokeWidth="1.8"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   >
@@ -213,6 +215,9 @@ const Footer: React.FC = () => {
               },
               {
                 name: 'LinkedIn',
+                href: 'https://www.linkedin.com/company/mayuri-landmarks/',
+                styles:
+                  'text-[#0A66C2] border-[#0A66C2]/30 bg-[#0A66C2]/10 hover:bg-[#0A66C2] hover:text-white hover:border-[#0A66C2]',
                 icon: (
                   <svg
                     width="18"
@@ -220,7 +225,7 @@ const Footer: React.FC = () => {
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    strokeWidth="1.5"
+                    strokeWidth="1.8"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   >
@@ -232,6 +237,9 @@ const Footer: React.FC = () => {
               },
               {
                 name: 'Facebook',
+                href: 'https://www.facebook.com/mayurilandmarks/',
+                styles:
+                  'text-[#1877F2] border-[#1877F2]/30 bg-[#1877F2]/10 hover:bg-[#1877F2] hover:text-white hover:border-[#1877F2]',
                 icon: (
                   <svg
                     width="18"
@@ -239,7 +247,7 @@ const Footer: React.FC = () => {
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    strokeWidth="1.5"
+                    strokeWidth="1.8"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   >
@@ -247,18 +255,14 @@ const Footer: React.FC = () => {
                   </svg>
                 ),
               },
-            ].map(({ name, icon }) => (
+            ].map(({ name, href, icon, styles }) => (
               <a
                 key={name}
-                href={
-                  name === 'Instagram'
-                    ? 'https://www.instagram.com/mayurilandmarks?igsh=MzFpNm82eHQ0ZnVo'
-                    : '#'
-                }
-                target={name === 'Instagram' ? '_blank' : undefined}
-                rel={name === 'Instagram' ? 'noopener noreferrer' : undefined}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label={name}
-                className="w-10 h-10 rounded-full border border-black/15 flex items-center justify-center text-black/50 hover:bg-black hover:text-white hover:border-black transition-all duration-400"
+                className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-300 shadow-sm hover:scale-105 ${styles}`}
               >
                 {icon}
               </a>
@@ -275,7 +279,7 @@ const Footer: React.FC = () => {
               <button
                 key={link.label}
                 onClick={() => scrollTo(link.id)}
-                className="text-black/60 text-sm md:text-base font-medium hover:text-black hover:translate-x-2 transition-all duration-300 w-fit text-left"
+                className="text-black/60 dark:text-white/70 text-sm md:text-base font-medium hover:text-black dark:hover:text-white hover:translate-x-2 transition-all duration-300 w-fit text-left"
               >
                 {link.label}
               </button>
@@ -292,7 +296,7 @@ const Footer: React.FC = () => {
               <button
                 key={s}
                 onClick={() => setActiveService(s)}
-                className="text-black/60 text-sm md:text-base font-medium hover:text-black hover:translate-x-2 transition-all duration-300 text-left w-fit group flex items-center gap-2"
+                className="text-black/60 dark:text-white/70 text-sm md:text-base font-medium hover:text-black dark:hover:text-white hover:translate-x-2 transition-all duration-300 text-left w-fit group flex items-center gap-2"
               >
                 {s}
                 <svg
@@ -323,7 +327,7 @@ const Footer: React.FC = () => {
           <div className="flex flex-col gap-4">
             <a
               href="tel:+918237277775"
-              className="flex items-center gap-3 text-black/70 hover:text-black text-sm font-medium transition-colors duration-300 group"
+              className="flex items-center gap-3 text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white text-sm font-medium transition-colors duration-300 group"
             >
               <span className="w-6 h-6 rounded-full bg-[#6CAFBF]/15 flex items-center justify-center group-hover:bg-[#6CAFBF]/30 transition-colors duration-300 shrink-0">
                 <svg
@@ -343,7 +347,7 @@ const Footer: React.FC = () => {
             </a>
             <a
               href="mailto:mayurilandmarks.sales@gmail.com"
-              className="flex items-center gap-3 text-black/70 hover:text-black text-sm font-medium transition-colors duration-300 group"
+              className="flex items-center gap-3 text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white text-sm font-medium transition-colors duration-300 group"
             >
               <span className="w-6 h-6 rounded-full bg-[#6CAFBF]/15 flex items-center justify-center group-hover:bg-[#6CAFBF]/30 transition-colors duration-300 shrink-0">
                 <svg
@@ -362,7 +366,7 @@ const Footer: React.FC = () => {
               </span>
               mayurilandmarks.sales@gmail.com
             </a>
-            <div className="flex items-start gap-3 text-black/60 text-sm font-medium">
+            <div className="flex items-start gap-3 text-black/60 dark:text-white/70 text-sm font-medium">
               <span className="w-6 h-6 rounded-full bg-[#6CAFBF]/15 flex items-center justify-center shrink-0 mt-0.5">
                 <svg
                   width="11"
@@ -387,7 +391,7 @@ const Footer: React.FC = () => {
 
           <button
             onClick={() => scrollTo('section-contact')}
-            className="group flex items-center gap-3 mt-2 w-fit border border-black/20 rounded-sm px-5 py-3 text-xs tracking-[0.2em] uppercase font-bold text-black/70 hover:bg-black hover:text-white hover:border-black transition-all duration-500"
+            className="group flex items-center gap-3 mt-2 w-fit border border-black/20 dark:border-white/20 rounded-sm px-5 py-3 text-xs tracking-[0.2em] uppercase font-bold text-black/70 dark:text-white/80 hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black hover:border-black dark:hover:border-white transition-all duration-500"
           >
             Start a Project
             <svg
@@ -410,14 +414,21 @@ const Footer: React.FC = () => {
       </div>
 
       <div className="border-t border-black/8 dark:border-white/10 px-4 md:px-[6vw] py-6 flex flex-col md:flex-row items-center justify-between gap-4 footer-item transition-colors duration-1000">
-        <span className="text-black/30 text-xs tracking-widest">
+        <span className="text-black/40 dark:text-white/40 text-xs tracking-widest">
           © {year} Mayuri Landmarks LLP. All rights reserved.
         </span>
 
-        <div className="flex items-center gap-2 text-black/30 text-xs tracking-widest">
-          <span>Crafted by Rohit & Tejas with</span>
-          <span className="text-[#6CAFBF]">♥</span>
-          <span>in Pune, India</span>
+        <div className="flex items-center flex-wrap justify-center gap-1.5 text-black/50 dark:text-white/50 text-xs tracking-widest">
+          <span>Developed and Designed by</span>
+          <a
+            href="https://goldspade.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-black/80 dark:text-white/80 hover:text-[#6CAFBF] dark:hover:text-[#6CAFBF] underline underline-offset-4 transition-colors"
+          >
+            goldspade.in
+          </a>
+          <span>with ❤️ in India</span>
         </div>
 
         <div className="flex items-center gap-5">
@@ -425,7 +436,7 @@ const Footer: React.FC = () => {
             <a
               key={l}
               href="#"
-              className="text-black/25 text-xs tracking-widest hover:text-black/60 transition-colors duration-300"
+              className="text-black/30 dark:text-white/30 text-xs tracking-widest hover:text-black/60 dark:hover:text-white/70 transition-colors duration-300"
             >
               {l}
             </a>

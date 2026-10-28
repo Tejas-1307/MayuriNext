@@ -11,6 +11,7 @@ import EmiCalculator from '@/components/cro/EmiCalculator';
 import NearbySection from '@/components/location/NearbySection';
 import LocationMap from '@/components/location/LocationMap';
 import BrochureSection from './BrochureSection';
+import ProjectWalkthroughVideo from './ProjectWalkthroughVideo';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -209,8 +210,8 @@ const NextProjectStrip: React.FC<NextProjectStripProps> = ({
           <span className="text-[#6CAFBF] text-[10px] tracking-[0.45em] uppercase font-bold">
             Next Project
           </span>
-          <span className="flex-1 h-[1px] bg-black/10" />
-          <span className="text-black/30 text-[10px] tracking-[0.3em] uppercase font-mono">
+          <span className="flex-1 h-[1px] bg-black/10 dark:bg-white/10" />
+          <span className="text-black/30 dark:text-white/40 text-[10px] tracking-[0.3em] uppercase font-mono">
             {String(nextProject.id).padStart(2, '0')} /{' '}
             {String(allProjectsData.length).padStart(2, '0')}
           </span>
@@ -219,7 +220,7 @@ const NextProjectStrip: React.FC<NextProjectStripProps> = ({
         <div className="flex items-end justify-between gap-6 md:gap-10">
           <h2
             ref={titleRef}
-            className="font-[magtis] uppercase font-extrabold leading-[0.88] tracking-tighter text-black"
+            className="font-[magtis] uppercase font-extrabold leading-[0.88] tracking-tighter text-black dark:text-white"
             style={{ fontSize: 'clamp(2.8rem, 7vw, 9rem)', opacity: 0 }}
           >
             {nextProject.name}
@@ -227,7 +228,7 @@ const NextProjectStrip: React.FC<NextProjectStripProps> = ({
 
           <div
             ref={arrowRef}
-            className="shrink-0 flex items-center justify-center w-14 h-14 md:w-20 md:h-20 rounded-full bg-black text-white mb-2"
+            className="shrink-0 flex items-center justify-center w-14 h-14 md:w-20 md:h-20 rounded-full bg-black text-white dark:bg-white dark:text-black mb-2"
             style={{ opacity: 0 }}
           >
             <svg
@@ -257,7 +258,7 @@ const NextProjectStrip: React.FC<NextProjectStripProps> = ({
           ].map((tag, i) => (
             <span
               key={i}
-              className="text-black/40 text-xs tracking-[0.25em] uppercase font-medium border border-black/10 px-3 py-1.5 rounded-full"
+              className="text-black/40 dark:text-white/40 text-xs tracking-[0.25em] uppercase font-medium border border-black/10 dark:border-white/15 px-3 py-1.5 rounded-full"
             >
               {tag}
             </span>
@@ -653,6 +654,18 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ id }) => {
         brochureUrl="/brochure-mayuri-adhinathpuram.pdf"
         pdfFilename="Mayuri-Adhinathpuram-Brochure.pdf"
       />
+
+      {/* Dedicated Project Walkthrough Video Section */}
+      {project.walkthroughVideo && (
+        <ProjectWalkthroughVideo
+          projectName={project.name}
+          projectLabel={project.label}
+          videoSrc={project.walkthroughVideo}
+          posterSrc={project.img}
+          projectType={project.type}
+          projectLocation={project.location}
+        />
+      )}
 
       <section className="relative w-full h-[80vh] mt-[10vh] md:h-[100vh] border-y border-black/10 dark:border-white/10 flex items-center justify-center p-4 md:p-8 bg-[#F5F5F0] dark:bg-[#080808] transition-colors duration-1000 overflow-hidden font-mono text-[8px] md:text-[10px] uppercase">
         <div className="absolute top-6 md:top-8 left-4 md:left-8 tracking-[0.2em] opacity-50 z-10 flex flex-col md:flex-row md:items-center">

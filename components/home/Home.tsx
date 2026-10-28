@@ -182,7 +182,7 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="relative w-full h-[95vh] md:h-screen bg-brand-bg overflow-hidden select-none">
+    <div className="relative w-full h-[95vh] md:h-screen bg-brand-bg dark:bg-[#111111] overflow-hidden select-none transition-colors duration-1000">
       {/* ── BACKGROUND CITYSCAPE IMAGE (Slide 1 & 2) ─────────── */}
       <div className="absolute inset-0 w-full h-full z-0 pointer-events-none overflow-hidden">
         <img
@@ -212,25 +212,25 @@ const Home: React.FC = () => {
           }`}
         >
           <div className="max-w-[90vw] md:max-w-[65vw] text-left">
-            <span className="slide-content-enter font-sans text-xs md:text-sm font-bold tracking-[0.4em] text-brand-dark/70 uppercase">
+            <span className="slide-content-enter font-sans text-xs md:text-sm font-bold tracking-[0.4em] text-brand-dark/70 dark:text-white/70 uppercase">
               Welcome to Mayuri Landmarks
             </span>
 
             <h1
-              className="slide-content-enter font-serif font-extrabold uppercase leading-[0.95] tracking-tighter text-brand-dark mt-4 mb-6 select-none"
+              className="slide-content-enter font-serif font-extrabold uppercase leading-[0.95] tracking-tighter text-brand-dark dark:text-white mt-4 mb-6 select-none"
               style={{ fontSize: 'clamp(2.4rem, 7.5vw, 6.8rem)' }}
             >
-              <div className="block text-brand-dark">Assurance of</div>
-              <div className="block text-[#4d8696] font-bold mt-2 tracking-wide font-serif">
+              <div className="block text-brand-dark dark:text-white">Assurance of</div>
+              <div className="block text-[#4d8696] dark:text-[#6CAFBF] font-bold mt-2 tracking-wide font-serif">
                 Quality Life
               </div>
             </h1>
 
             <div className="slide-content-enter max-w-xl border-l-2 border-[#8BC7D8] pl-5 mt-8 space-y-4">
-              <p className="font-sans font-semibold text-brand-dark/90 text-sm md:text-lg leading-relaxed">
+              <p className="font-sans font-semibold text-brand-dark/90 dark:text-white/90 text-sm md:text-lg leading-relaxed">
                 Building exceptional communities and premium living experiences across Pune, crafting legacies of architectural distinction and trust.
               </p>
-              <p className="font-sans font-medium text-brand-dark/70 text-xs md:text-sm leading-relaxed italic">
+              <p className="font-sans font-medium text-brand-dark/70 dark:text-white/70 text-xs md:text-sm leading-relaxed italic">
                 "Mayuri Landmarks LLP born with a purpose to build projects that breathe life into the dreams of their customers."
               </p>
             </div>
@@ -238,13 +238,13 @@ const Home: React.FC = () => {
             <div className="slide-content-enter mt-10 flex flex-wrap items-center gap-4">
               <button
                 onClick={scrollToProjects}
-                className="px-8 py-4 bg-brand-dark hover:bg-[#8BC7D8] text-white hover:text-black font-sans font-extrabold text-xs uppercase tracking-widest rounded-full transition-all duration-300 hover:scale-[1.03] shadow-lg cursor-pointer"
+                className="px-8 py-4 bg-brand-dark dark:bg-white hover:bg-[#8BC7D8] text-white dark:text-black hover:text-black font-sans font-extrabold text-xs uppercase tracking-widest rounded-full transition-all duration-300 hover:scale-[1.03] shadow-lg cursor-pointer"
               >
                 Explore Projects
               </button>
               <button
                 onClick={() => goToSlide(1)}
-                className="px-8 py-4 border border-brand-dark/30 hover:border-brand-dark text-brand-dark font-sans font-extrabold text-xs uppercase tracking-widest rounded-full transition-all duration-300 hover:bg-brand-dark hover:text-white hover:scale-[1.03] cursor-pointer"
+                className="px-8 py-4 border border-brand-dark/30 dark:border-white/30 hover:border-brand-dark dark:hover:border-white text-brand-dark dark:text-white font-sans font-extrabold text-xs uppercase tracking-widest rounded-full transition-all duration-300 hover:bg-brand-dark dark:hover:bg-white hover:text-white dark:hover:text-black hover:scale-[1.03] cursor-pointer"
               >
                 Our Legacy
               </button>
@@ -261,34 +261,34 @@ const Home: React.FC = () => {
           }`}
         >
           <div className="max-w-[90vw] md:max-w-[80vw] w-full text-left">
-            <span className="slide-content-enter font-sans text-xs md:text-sm font-bold tracking-[0.4em] text-brand-dark/70 uppercase">
+            <span className="slide-content-enter font-sans text-xs md:text-sm font-bold tracking-[0.4em] text-brand-dark/70 dark:text-white/70 uppercase">
               Established Excellence
             </span>
 
             <h2
-              className="slide-content-enter font-serif font-extrabold uppercase leading-[0.95] tracking-tighter text-brand-dark mt-4 mb-6 select-none"
+              className="slide-content-enter font-serif font-extrabold uppercase leading-[0.95] tracking-tighter text-brand-dark dark:text-white mt-4 mb-6 select-none"
               style={{ fontSize: 'clamp(2.4rem, 6.5vw, 5.5rem)' }}
             >
               <div>11+ Years And</div>
-              <div className="text-[#4d8696] font-bold mt-2 tracking-wide font-serif">
+              <div className="text-[#4d8696] dark:text-[#6CAFBF] font-bold mt-2 tracking-wide font-serif">
                 still growing
               </div>
             </h2>
 
-            <p className="slide-content-enter font-sans font-semibold text-brand-dark/95 text-sm md:text-lg max-w-xl leading-relaxed mb-10">
+            <p className="slide-content-enter font-sans font-semibold text-brand-dark/95 dark:text-white/90 text-sm md:text-lg max-w-xl leading-relaxed mb-10">
               Shaping Pune's modern skyline through visionary planning, uncompromising structural engineering, and values rooted in client relationships.
             </p>
 
-            <div className="slide-content-enter grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-12 max-w-4xl border-t border-brand-dark/20 pt-10">
+            <div className="slide-content-enter grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-12 max-w-4xl border-t border-brand-dark/20 dark:border-white/20 pt-10">
               <div className="flex flex-col gap-2">
                 <span
                   data-target="10"
                   data-format="million"
-                  className="slide-counter font-serif text-4xl md:text-6xl font-black text-brand-dark leading-none"
+                  className="slide-counter font-serif text-4xl md:text-6xl font-black text-brand-dark dark:text-white leading-none"
                 >
                   10+
                 </span>
-                <span className="text-[10px] md:text-xs font-sans font-bold tracking-[0.15em] text-brand-dark/50 uppercase">
+                <span className="text-[10px] md:text-xs font-sans font-bold tracking-[0.15em] text-brand-dark/50 dark:text-white/50 uppercase">
                   Mn Sq. Ft Developed
                 </span>
               </div>
@@ -297,11 +297,11 @@ const Home: React.FC = () => {
                 <span
                   data-target="1500"
                   data-format="comma"
-                  className="slide-counter font-serif text-4xl md:text-6xl font-black text-brand-dark leading-none"
+                  className="slide-counter font-serif text-4xl md:text-6xl font-black text-brand-dark dark:text-white leading-none"
                 >
                   1500+
                 </span>
-                <span className="text-[10px] md:text-xs font-sans font-bold tracking-[0.15em] text-brand-dark/50 uppercase">
+                <span className="text-[10px] md:text-xs font-sans font-bold tracking-[0.15em] text-brand-dark/50 dark:text-white/50 uppercase">
                   Happy Families
                 </span>
               </div>
@@ -310,11 +310,11 @@ const Home: React.FC = () => {
                 <span
                   data-target="6"
                   data-format="none"
-                  className="slide-counter font-serif text-4xl md:text-6xl font-black text-brand-dark leading-none"
+                  className="slide-counter font-serif text-4xl md:text-6xl font-black text-brand-dark dark:text-white leading-none"
                 >
                   06+
                 </span>
-                <span className="text-[10px] md:text-xs font-sans font-bold tracking-[0.15em] text-brand-dark/50 uppercase">
+                <span className="text-[10px] md:text-xs font-sans font-bold tracking-[0.15em] text-brand-dark/50 dark:text-white/50 uppercase">
                   Projects Delivered
                 </span>
               </div>
@@ -327,7 +327,7 @@ const Home: React.FC = () => {
       </div>
 
       {/* ── BOTTOM TABS & NAVIGATION CONTROLS ─────────────────── */}
-      <div className="absolute bottom-10 left-0 w-full px-6 md:px-[8vw] z-40 flex items-center justify-between border-t border-brand-dark/15 pt-6 text-brand-dark">
+      <div className="absolute bottom-10 left-0 w-full px-6 md:px-[8vw] z-40 flex items-center justify-between border-t border-brand-dark/15 dark:border-white/15 pt-6 text-brand-dark dark:text-white">
         {/* Left Side: Slide Indicators */}
         <div className="flex items-center gap-6 md:gap-12">
           {[
@@ -346,8 +346,8 @@ const Home: React.FC = () => {
                   <span
                     className={`text-[10px] md:text-xs font-mono transition-colors duration-300 ${
                       isActive
-                        ? 'text-brand-dark font-extrabold'
-                        : 'text-brand-dark/40 group-hover:text-brand-dark/70'
+                        ? 'text-brand-dark dark:text-white font-extrabold'
+                        : 'text-brand-dark/40 dark:text-white/40 group-hover:text-brand-dark/70 dark:group-hover:text-white/70'
                     }`}
                   >
                     {tab.num}
@@ -355,14 +355,14 @@ const Home: React.FC = () => {
                   <span
                     className={`text-[10px] md:text-xs font-sans font-bold uppercase tracking-wider hidden md:inline transition-colors duration-300 ${
                       isActive
-                        ? 'text-brand-dark font-extrabold'
-                        : 'text-brand-dark/30 group-hover:text-brand-dark/60'
+                        ? 'text-brand-dark dark:text-white font-extrabold'
+                        : 'text-brand-dark/30 dark:text-white/30 group-hover:text-brand-dark/60 dark:group-hover:text-white/60'
                     }`}
                   >
                     {tab.title}
                   </span>
                 </div>
-                <div className="w-[18vw] md:w-[12vw] h-[2px] bg-brand-dark/10 relative overflow-hidden rounded-full">
+                <div className="w-[18vw] md:w-[12vw] h-[2px] bg-brand-dark/10 dark:bg-white/10 relative overflow-hidden rounded-full">
                   <div
                     key={`${tab.id}-${slideKey}`}
                     className={`absolute top-0 left-0 h-full bg-[#8BC7D8] rounded-full ${
@@ -383,7 +383,7 @@ const Home: React.FC = () => {
         <div className="flex items-center gap-3">
           <button
             onClick={() => goToSlide((currentSlide - 1 + 3) % 3)}
-            className="w-10 h-10 border border-brand-dark/20 hover:border-[#8BC7D8] rounded-full flex items-center justify-center text-brand-dark/50 hover:text-brand-dark hover:scale-105 transition-all duration-300 cursor-pointer"
+            className="w-10 h-10 border border-brand-dark/20 dark:border-white/20 hover:border-[#8BC7D8] rounded-full flex items-center justify-center text-brand-dark/50 dark:text-white/50 hover:text-brand-dark dark:hover:text-white hover:scale-105 transition-all duration-300 cursor-pointer"
             aria-label="Previous Slide"
           >
             <svg
@@ -399,7 +399,7 @@ const Home: React.FC = () => {
           </button>
           <button
             onClick={() => goToSlide((currentSlide + 1) % 3)}
-            className="w-10 h-10 border border-brand-dark/20 hover:border-[#8BC7D8] rounded-full flex items-center justify-center text-brand-dark/50 hover:text-brand-dark hover:scale-105 transition-all duration-300 cursor-pointer"
+            className="w-10 h-10 border border-brand-dark/20 dark:border-white/20 hover:border-[#8BC7D8] rounded-full flex items-center justify-center text-brand-dark/50 dark:text-white/50 hover:text-brand-dark dark:hover:text-white hover:scale-105 transition-all duration-300 cursor-pointer"
             aria-label="Next Slide"
           >
             <svg

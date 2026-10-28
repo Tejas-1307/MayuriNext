@@ -268,10 +268,11 @@ const Amenities: React.FC = () => {
               <div key={i} className="overflow-hidden leading-none">
                 <span
                   ref={addTitle}
-                  className="block font-[magtis] uppercase font-extrabold tracking-tighter leading-[0.88]"
+                  className={`block font-[magtis] uppercase font-extrabold tracking-tighter leading-[0.88] ${
+                    i === 1 ? 'text-[#6CAFBF]' : 'text-black dark:text-white'
+                  }`}
                   style={{
                     fontSize: 'clamp(2.8rem, 8.5vw, 8.5rem)',
-                    color: i === 1 ? '#6CAFBF' : 'black',
                   }}
                 >
                   {word}

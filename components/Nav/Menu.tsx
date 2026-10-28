@@ -26,9 +26,8 @@ const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
     { title: 'Home', num: '01', href: 'section-home' },
     { title: 'Projects', num: '02', href: 'section-projects' },
     { title: 'Amenities', num: '03', href: 'section-amenities' },
-    { title: 'Testimonials', num: '04', href: 'section-testimonials' },
-    { title: 'Services', num: '05', href: 'section-services' },
-    { title: 'Contact', num: '06', href: 'section-contact' },
+    { title: 'Services', num: '04', href: 'section-services' },
+    { title: 'Contact', num: '05', href: 'section-contact' },
   ];
 
   const handleNavClick = (href: string) => {
@@ -175,7 +174,7 @@ const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
           <X size={32} strokeWidth={1.5} />
         </button>
 
-        <div className="w-full flex justify-between items-center text-xs tracking-widest font-bold uppercase text-black/70 px-4 md:px-[4vw]">
+        <div className="w-full flex justify-between items-center text-xs tracking-widest font-bold uppercase text-black/70 dark:text-white/70 px-4 md:px-[4vw]">
           <span
             ref={(el) => {
               subtextRef.current[0] = el;
@@ -259,7 +258,7 @@ const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
               />
             </div>
 
-            <div className="w-full pt-8 flex justify-between uppercase text-xs tracking-[0.2em] font-bold text-black/60 pointer-events-none">
+            <div className="w-full pt-8 flex justify-between uppercase text-xs tracking-[0.2em] font-bold text-black/60 dark:text-white/60 pointer-events-none">
               <span
                 ref={(el) => {
                   subtextRef.current[5] = el;
@@ -278,7 +277,7 @@ const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
           </div>
         </div>
 
-        <div className="w-full flex flex-col md:flex-row gap-4 md:gap-0 mt-8 md:mt-0 justify-between items-center text-[10px] md:text-xs tracking-widest font-bold uppercase text-black/70 px-4 md:px-[4vw]">
+        <div className="w-full flex flex-col md:flex-row gap-4 md:gap-0 mt-8 md:mt-0 justify-between items-center text-[10px] md:text-xs tracking-widest font-bold uppercase text-black/70 dark:text-white/70 px-4 md:px-[4vw]">
           <a
             ref={(el) => {
               subtextRef.current[7] = el;

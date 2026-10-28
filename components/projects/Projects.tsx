@@ -10,7 +10,11 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+const infinityVideo = '/assets/Project Video/Mayuri Infinity Walkthrogh.mp4';
 const optimumVideo = '/assets/Flats_Img/Mayuri Optimum Walkthrough.mp4';
+const residencyVideo = '/assets/Project Video/Mayuri Residency Walkthrough.mp4';
+const adhinathpuramVideo = 'https://www.mayurilandmarks.com/images/sliders/FlatNew1.mp4';
+const sapphireVideo = '/assets/Project Video/WhatsApp Video 2026-02-26 at 16.06.56.mp4';
 
 export interface ProjectItemData {
   id: number;
@@ -41,6 +45,7 @@ export const allProjects: ProjectItemData[] = [
     type: 'Residential Complex',
     year: '2023',
     units: '120+ Units',
+    video: infinityVideo,
     img: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=1800&auto=format&fit=crop',
     thumb: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=600&auto=format&fit=crop',
     size: 'large',
@@ -74,6 +79,7 @@ export const allProjects: ProjectItemData[] = [
     type: 'Luxury Apartments',
     year: '2021',
     units: '80+ Units',
+    video: residencyVideo,
     img: 'https://images.unsplash.com/photo-1460317442991-0ec209397118?q=80&w=1800&auto=format&fit=crop',
     thumb: 'https://images.unsplash.com/photo-1460317442991-0ec209397118?q=80&w=600&auto=format&fit=crop',
     size: 'small',
@@ -90,7 +96,7 @@ export const allProjects: ProjectItemData[] = [
     type: 'Residential Township',
     year: '2025 (Est.)',
     units: '300+ Units',
-    video: 'https://www.mayurilandmarks.com/images/sliders/FlatNew1.mp4',
+    video: adhinathpuramVideo,
     img: 'https://www.mayurilandmarks.com/images/sliders/slide3.jpg',
     thumb: 'https://www.mayurilandmarks.com/images/sliders/slide3.jpg',
     mapUrl: 'https://maps.google.com/?q=Mayuri+Adhinathpuram+Pune',
@@ -115,6 +121,7 @@ export const allProjects: ProjectItemData[] = [
     type: 'Residential Premium Apartments',
     year: '2024',
     units: '150+ Units',
+    video: sapphireVideo,
     img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1800&auto=format&fit=crop',
     thumb: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600&auto=format&fit=crop',
     size: 'small',
@@ -326,6 +333,8 @@ const Projects: React.FC = () => {
                   loop
                   muted
                   playsInline
+                  preload="metadata"
+                  poster={project.img}
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
               ) : (
@@ -425,13 +434,25 @@ const Projects: React.FC = () => {
               </svg>
             </button>
 
-            <div className="relative w-full h-[40vh] bg-black">
-              <img
-                src={quickViewProject.img}
-                alt={quickViewProject.name}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+            <div className="relative w-full h-[40vh] bg-black overflow-hidden">
+              {quickViewProject.video ? (
+                <video
+                  src={quickViewProject.video}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  poster={quickViewProject.img}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <img
+                  src={quickViewProject.img}
+                  alt={quickViewProject.name}
+                  className="w-full h-full object-cover"
+                />
+              )}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
               <div className="absolute bottom-6 left-6 right-6">
                 <span className="text-[#6CAFBF] text-xs tracking-[0.25em] uppercase font-bold">
                   {quickViewProject.type}
@@ -519,7 +540,7 @@ const Projects: React.FC = () => {
               <span className="font-[magtis] text-[4vh] md:text-[6vh] font-extrabold leading-none tracking-tight group-hover:text-[#6CAFBF] transition-colors duration-500">
                 {stat.value}
               </span>
-              <span className="text-black/40 text-xs tracking-[0.2em] uppercase font-semibold group-hover:text-white/50 transition-colors duration-500">
+              <span className="text-black/40 dark:text-white/40 text-xs tracking-[0.2em] uppercase font-semibold group-hover:text-white/50 transition-colors duration-500">
                 {stat.label}
               </span>
             </div>

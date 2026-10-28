@@ -11,6 +11,7 @@ export interface ProjectItem {
   thumb: string;
   size?: 'large' | string;
   video?: string;
+  walkthroughVideo?: string;
   images: string[];
   desc: string;
   mapUrl?: string;
@@ -26,6 +27,7 @@ export const allProjectsData: ProjectItem[] = [
     type: 'Residential Complex',
     year: '2023',
     units: '120+ Units',
+    walkthroughVideo: '/assets/Project Video/Mayuri Infinity Walkthrogh.mp4',
     img: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=1800&auto=format&fit=crop',
     thumb: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=600&auto=format&fit=crop',
     size: 'large',
@@ -47,6 +49,7 @@ export const allProjectsData: ProjectItem[] = [
     year: '2022',
     units: '200+ Units',
     video: '/assets/Flats_Img/Mayuri Optimum Walkthrough.mp4',
+    walkthroughVideo: '/assets/Flats_Img/Mayuri Optimum Walkthrough.mp4',
     img: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1800&auto=format&fit=crop',
     thumb: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=600&auto=format&fit=crop',
     mapUrl: 'https://share.google/1B1ipVeSLLXqhjj5d',
@@ -66,6 +69,7 @@ export const allProjectsData: ProjectItem[] = [
     type: 'Luxury Apartments',
     year: '2021',
     units: '80+ Units',
+    walkthroughVideo: '/assets/Project Video/Mayuri Residency Walkthrough.mp4',
     img: 'https://images.unsplash.com/photo-1460317442991-0ec209397118?q=80&w=1800&auto=format&fit=crop',
     thumb: 'https://images.unsplash.com/photo-1460317442991-0ec209397118?q=80&w=600&auto=format&fit=crop',
     mapUrl: 'https://share.google/awsbUAQbGBkWBkRwN',
@@ -85,6 +89,7 @@ export const allProjectsData: ProjectItem[] = [
     year: '2025 (Est.)',
     units: '300+ Units',
     video: 'https://www.mayurilandmarks.com/images/sliders/FlatNew1.mp4',
+    walkthroughVideo: 'https://www.mayurilandmarks.com/images/sliders/FlatNew1.mp4',
     img: 'https://www.mayurilandmarks.com/images/sliders/slide3.jpg',
     thumb: 'https://www.mayurilandmarks.com/images/sliders/slide3.jpg',
     mapUrl: 'https://maps.google.com/?q=Mayuri+Adhinathpuram+Pune',
@@ -105,6 +110,7 @@ export const allProjectsData: ProjectItem[] = [
     type: 'Residential Premium Apartments',
     year: '2024',
     units: '150+ Units',
+    walkthroughVideo: '/assets/Project Video/WhatsApp Video 2026-02-26 at 16.06.56.mp4',
     img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1800&auto=format&fit=crop',
     thumb: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600&auto=format&fit=crop',
     images: [

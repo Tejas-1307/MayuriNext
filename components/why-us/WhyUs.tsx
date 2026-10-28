@@ -255,8 +255,8 @@ const WhyUs: React.FC = () => {
       <div className="px-4 md:px-[6vw]">
         <div className="flex flex-col xl:flex-row justify-between items-start gap-12 xl:gap-0 mt-[4vh]">
           <div
-            className="w-full xl:w-[65%] flex flex-col gap-2 font-[magtis] uppercase text-[4.5vh] md:text-[7.5vh] lg:text-[9vh] leading-[1] font-extrabold tracking-tight transition-colors duration-500"
-            style={{ color: hoveredIndex !== null ? 'white' : 'black' }}
+            className="w-full xl:w-[65%] flex flex-col gap-2 font-[magtis] uppercase text-[4.5vh] md:text-[7.5vh] lg:text-[9vh] leading-[1] font-extrabold tracking-tight transition-colors duration-500 text-black dark:text-white"
+            style={{ color: hoveredIndex !== null ? 'white' : undefined }}
           >
             <div className="overflow-hidden">
               <div ref={(el) => addToRefs(el, headlineRefs)}>
@@ -291,12 +291,12 @@ const WhyUs: React.FC = () => {
 
           <div
             ref={paragraphRef}
-            className="w-full xl:w-[30%] flex flex-col font-sans transition-colors duration-500"
+            className="w-full xl:w-[30%] flex flex-col font-sans transition-colors duration-500 text-black/80 dark:text-white/80"
             style={{
               color:
                 hoveredIndex !== null
                   ? 'rgba(255,255,255,0.9)'
-                  : 'rgba(0,0,0,0.8)',
+                  : undefined,
             }}
           >
             <div className="text-base md:text-lg font-medium leading-relaxed">
@@ -374,7 +374,7 @@ const WhyUs: React.FC = () => {
             <div className="w-full md:w-[60%] flex flex-col justify-center pr-0 md:pr-8">
               <h2
                 ref={(el) => addToRefs(el, newTextRefs)}
-                className="text-[3.5vh] md:text-[5.5vh] font-[magtis] uppercase leading-[1.1] mb-8 tracking-tight text-black flex flex-col gap-2"
+                className="text-[3.5vh] md:text-[5.5vh] font-[magtis] uppercase leading-[1.1] mb-8 tracking-tight text-black dark:text-white flex flex-col gap-2"
               >
                 <span className="block overflow-hidden">
                   <span className="block">Mayuri Landmarks LLP</span>
@@ -395,7 +395,7 @@ const WhyUs: React.FC = () => {
               <div className="w-full md:w-5/6 flex flex-col gap-4">
                 <p
                   ref={(el) => addToRefs(el, newTextRefs)}
-                  className="text-black/80 text-base md:text-xl font-medium leading-relaxed"
+                  className="text-black/80 dark:text-white/80 text-base md:text-xl font-medium leading-relaxed"
                 >
                   With a fine balance of entrepreneurial expertise and vision combined with our commitment to excellence, Mayuri Landmarks stands as a hallmark of trust in Pune.
                 </p>
@@ -569,12 +569,12 @@ const WhyUs: React.FC = () => {
                 ref={(el) => addToRefs(el, listRefs)}
                 className={`
                   w-full flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8 
-                  border-b border-black/10 py-5 md:py-6 cursor-pointer
+                  border-b border-black/10 dark:border-white/10 py-5 md:py-6 cursor-pointer
                   transition-all duration-500 
                   ${
                     hoveredIndex !== null
                       ? 'border-white/20 text-white'
-                      : 'text-black hover:text-[#6CAFBF]'
+                      : 'text-black dark:text-white hover:text-[#6CAFBF]'
                   }
                   ${
                     hoveredIndex !== null && hoveredIndex !== index

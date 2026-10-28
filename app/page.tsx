@@ -61,10 +61,9 @@ export default function HomePage() {
         <div id="section-emi-calculator">
           <EmiCalculator />
         </div>
-        <div id="section-testimonials">
-          <Testimonials />
-        </div>
-        <ArchitecturalDivider />
+        {/* Kept in project, hidden from live website as requested */}
+        {/* <div id="section-testimonials"><Testimonials /></div> */}
+        {/* <ArchitecturalDivider /> */}
         <div id="section-services">
           <Services />
         </div>
