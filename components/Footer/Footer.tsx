@@ -147,9 +147,9 @@ const Footer: React.FC = () => {
         <h2
           ref={bigTextRef}
           className="font-[magtis] uppercase font-extrabold leading-none tracking-tighter text-black/[0.07] dark:text-white/[0.07] select-none pointer-events-none whitespace-nowrap transition-colors duration-1000"
-          style={{ fontSize: 'clamp(3.5rem, 11vw, 15rem)' }}
+          style={{ fontSize: 'clamp(4rem, 14vw, 18rem)' }}
         >
-          Mayuri Landmarks
+          Adhinathpuram
         </h2>
       </div>
 
@@ -248,14 +248,18 @@ const Footer: React.FC = () => {
                   </svg>
                 ),
               },
-            ].map(({ name, href, icon, styles }) => (
+            ].map(({ name, icon }) => (
               <a
                 key={name}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={
+                  name === 'Instagram'
+                    ? 'https://www.instagram.com/mayurilandmarks?igsh=MzFpNm82eHQ0ZnVo'
+                    : '#'
+                }
+                target={name === 'Instagram' ? '_blank' : undefined}
+                rel={name === 'Instagram' ? 'noopener noreferrer' : undefined}
                 aria-label={name}
-                className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-300 shadow-sm hover:scale-105 ${styles}`}
+                className="w-10 h-10 rounded-full border border-black/15 flex items-center justify-center text-black/50 hover:bg-black hover:text-white hover:border-black transition-all duration-400"
               >
                 {icon}
               </a>

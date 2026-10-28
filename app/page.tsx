@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import Home from '@/components/home/Home';
 import Projects from '@/components/projects/Projects';
 import Amenities from '@/components/Amenities/Amenities';
-import Testimonials from '@/components/testimonials/Testimonials';
 import ArchitecturalDivider from '@/components/ui/ArchitecturalDivider';
 import Services from '@/components/services/Services';
 import Contact from '@/components/contact/Contact';
@@ -61,6 +60,7 @@ export default function HomePage() {
         <div id="section-emi-calculator">
           <EmiCalculator />
         </div>
+        <ArchitecturalDivider />
         {/* Kept in project, hidden from live website as requested */}
         {/* <div id="section-testimonials"><Testimonials /></div> */}
         {/* <ArchitecturalDivider /> */}
