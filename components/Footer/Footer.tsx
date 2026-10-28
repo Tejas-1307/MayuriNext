@@ -168,13 +168,6 @@ const Footer: React.FC = () => {
           </p>
 
           <div className="flex flex-wrap items-center gap-3">
-            <div className="flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1.5 rounded-full text-[11px] font-bold text-emerald-600 dark:text-emerald-400">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-              </svg>
-              <span>MAHA RERA: P52100049330</span>
-            </div>
-
             <div className="flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/30 px-3 py-1.5 rounded-full text-[11px] font-bold text-amber-500">
               <span>★ 4.8 / 5.0</span>
               <span className="text-black/40 dark:text-white/40 font-medium">(500+ Google Reviews)</span>
