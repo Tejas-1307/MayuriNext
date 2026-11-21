@@ -147,9 +147,9 @@ const Footer: React.FC = () => {
         <h2
           ref={bigTextRef}
           className="font-[magtis] uppercase font-extrabold leading-none tracking-tighter text-black/[0.07] dark:text-white/[0.07] select-none pointer-events-none whitespace-nowrap transition-colors duration-1000"
-          style={{ fontSize: 'clamp(4rem, 14vw, 18rem)' }}
+          style={{ fontSize: 'clamp(4rem, 14vw, 10.4rem)' }}
         >
-          Adhinathpuram
+          Mayuri Landmarks
         </h2>
       </div>
 
@@ -188,21 +188,30 @@ const Footer: React.FC = () => {
                 name: 'Instagram',
                 href: 'https://www.instagram.com/mayurilandmarks?obrf=cGswbDVnMTJ0MjJ1',
                 styles:
-                  'text-[#E4405F] border-[#E4405F]/30 bg-[#E4405F]/10 hover:bg-[#E4405F] hover:text-white hover:border-[#E4405F]',
+                  'border-[#833AB4]/35 bg-[#833AB4]/5 hover:bg-[#833AB4]/10 hover:border-[#833AB4]/70',
                 icon: (
                   <svg
                     width="18"
                     height="18"
                     viewBox="0 0 24 24"
                     fill="none"
-                    stroke="currentColor"
+                    stroke="url(#instagram-brand-gradient)"
                     strokeWidth="1.8"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   >
+                    <defs>
+                      <linearGradient id="instagram-brand-gradient" x1="3" y1="21" x2="21" y2="3" gradientUnits="userSpaceOnUse">
+                        <stop offset="0" stopColor="#FFD600" />
+                        <stop offset="0.24" stopColor="#FF7A00" />
+                        <stop offset="0.48" stopColor="#FF0169" />
+                        <stop offset="0.72" stopColor="#D300C5" />
+                        <stop offset="1" stopColor="#7638FA" />
+                      </linearGradient>
+                    </defs>
                     <rect x="2" y="2" width="20" height="20" rx="5" />
                     <circle cx="12" cy="12" r="4" />
-                    <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
+                    <circle cx="17.5" cy="6.5" r="0.5" fill="#7638FA" stroke="none" />
                   </svg>
                 ),
               },
@@ -210,7 +219,7 @@ const Footer: React.FC = () => {
                 name: 'LinkedIn',
                 href: 'https://www.linkedin.com/company/mayuri-landmarks/',
                 styles:
-                  'text-[#0A66C2] border-[#0A66C2]/30 bg-[#0A66C2]/10 hover:bg-[#0A66C2] hover:text-white hover:border-[#0A66C2]',
+                  'text-[#0A66C2] border-[#0A66C2]/35 bg-[#0A66C2]/5 hover:bg-[#0A66C2]/10 hover:border-[#0A66C2]/70',
                 icon: (
                   <svg
                     width="18"
@@ -232,7 +241,7 @@ const Footer: React.FC = () => {
                 name: 'Facebook',
                 href: 'https://www.facebook.com/mayurilandmarks/',
                 styles:
-                  'text-[#1877F2] border-[#1877F2]/30 bg-[#1877F2]/10 hover:bg-[#1877F2] hover:text-white hover:border-[#1877F2]',
+                  'text-[#1877F2] border-[#1877F2]/35 bg-[#1877F2]/5 hover:bg-[#1877F2]/10 hover:border-[#1877F2]/70',
                 icon: (
                   <svg
                     width="18"
@@ -248,18 +257,14 @@ const Footer: React.FC = () => {
                   </svg>
                 ),
               },
-            ].map(({ name, icon }) => (
+            ].map(({ name, href, styles, icon }) => (
               <a
                 key={name}
-                href={
-                  name === 'Instagram'
-                    ? 'https://www.instagram.com/mayurilandmarks?igsh=MzFpNm82eHQ0ZnVo'
-                    : '#'
-                }
-                target={name === 'Instagram' ? '_blank' : undefined}
-                rel={name === 'Instagram' ? 'noopener noreferrer' : undefined}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label={name}
-                className="w-10 h-10 rounded-full border border-black/15 flex items-center justify-center text-black/50 hover:bg-black hover:text-white hover:border-black transition-all duration-400"
+                className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-400 ${styles}`}
               >
                 {icon}
               </a>
