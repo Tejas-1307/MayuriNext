@@ -301,11 +301,13 @@ export default function BookingForm({
     <div className={`w-full max-w-4xl mx-auto text-black dark:text-white ${className}`}>
       {/* Optional Custom Header */}
       {title && (
-        <div className="mb-6 text-left space-y-2">
+        <div className={`text-left ${compact ? 'mb-3 space-y-1' : 'mb-6 space-y-2'}`}>
           <span className="text-[#6CAFBF] text-xs font-bold tracking-[0.3em] uppercase block">
             {formMode === 'site-visit' ? 'VIP Booking Portal' : 'Direct Enquiry'}
           </span>
-          <h3 className="text-2xl md:text-3xl font-[magtis] uppercase font-extrabold tracking-tight">
+          <h3 className={`font-[magtis] uppercase font-extrabold tracking-tight ${
+            compact ? 'text-xl md:text-2xl' : 'text-2xl md:text-3xl'
+          }`}>
             {title}
           </h3>
           {subtitle && (
@@ -389,7 +391,7 @@ export default function BookingForm({
         </div>
       ) : (
         /* FORM STATE */
-        <form onSubmit={handleSubmit} noValidate className="space-y-4">
+        <form onSubmit={handleSubmit} noValidate className={compact ? 'space-y-2.5' : 'space-y-4'}>
           {/* Honeypot field - anti spam */}
           <input
             type="text"

@@ -514,8 +514,8 @@ const Projects: React.FC = () => {
 
       {/* Site Visit Booking Modal Triggered from Card */}
       {visitModalProject && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md overflow-y-auto">
-          <div className="relative w-full max-w-4xl bg-[#F5F5F0] dark:bg-[#0A0A0A] rounded-md overflow-hidden shadow-2xl my-8">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md overflow-y-auto">
+          <div className="relative w-full max-w-4xl max-h-[92vh] bg-[#F5F5F0] dark:bg-[#0A0A0A] rounded-md overflow-y-auto shadow-2xl my-auto">
             <button
               onClick={() => setVisitModalProject(null)}
               className="absolute top-4 right-4 z-50 text-black dark:text-white bg-black/10 dark:bg-white/10 hover:bg-black/20 dark:hover:bg-white/20 p-3 rounded-full transition-colors"
@@ -525,8 +525,8 @@ const Projects: React.FC = () => {
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
             </button>
-            <div className="p-4 md:p-8">
-              <ScheduleSiteVisit projectName={visitModalProject} />
+            <div>
+              <ScheduleSiteVisit projectName={visitModalProject} compact />
             </div>
           </div>
         </div>

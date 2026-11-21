@@ -34,10 +34,12 @@ const TIMELINE_STEPS = [
 
 interface ScheduleSiteVisitProps {
   projectName?: string;
+  compact?: boolean;
 }
 
 export default function ScheduleSiteVisit({
   projectName = '',
+  compact = false,
 }: ScheduleSiteVisitProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLDivElement>(null);
@@ -87,28 +89,38 @@ export default function ScheduleSiteVisit({
     <section
       ref={sectionRef}
       id="schedule-visit"
-      className="w-full bg-[#F5F5F0] dark:bg-[#080808] text-black dark:text-white transition-colors duration-1000 py-16 md:py-24 px-4 md:px-[4vw] select-none"
+      className={`w-full bg-[#F5F5F0] dark:bg-[#080808] text-black dark:text-white transition-colors duration-1000 select-none ${
+        compact ? 'py-4 px-3 md:px-5' : 'py-16 md:py-24 px-4 md:px-[4vw]'
+      }`}
     >
-      <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start my-4 md:my-8">
+      <div className={`max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 items-start ${
+        compact ? 'gap-5 lg:gap-7 my-0' : 'gap-8 lg:gap-14 my-4 md:my-8'
+      }`}>
         {/* LEFT PANEL (35% - 4.5 COLS) — Vertical Storytelling Timeline */}
-        <div className="lg:col-span-5 space-y-8 lg:pr-4">
-          <div ref={headlineRef} className="space-y-4">
+        <div className={`lg:col-span-5 lg:pr-4 ${compact ? 'space-y-4' : 'space-y-8'}`}>
+          <div ref={headlineRef} className={compact ? 'space-y-2' : 'space-y-4'}>
             <span className="text-[#6CAFBF] text-xs font-bold tracking-[0.35em] uppercase block">
               Exclusive Site Experience
             </span>
 
-            <h2 className="font-[magtis] uppercase font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-[0.9] tracking-tighter">
+            <h2 className={`font-[magtis] uppercase font-extrabold leading-[0.9] tracking-tighter ${
+              compact ? 'text-3xl sm:text-4xl lg:text-5xl' : 'text-4xl sm:text-5xl lg:text-6xl'
+            }`}>
               Schedule Your <br />
               <span className="text-[#6CAFBF]">Private Visit.</span>
             </h2>
 
-            <p className="text-black/60 dark:text-white/60 text-sm md:text-base font-medium leading-relaxed max-w-md">
+            <p className={`text-black/60 dark:text-white/60 font-medium leading-relaxed max-w-md ${
+              compact ? 'text-xs leading-snug' : 'text-sm md:text-base'
+            }`}>
               Step into the world of Mayuri Landmarks. Experience unyielding structural craftsmanship, biophilic landscaping, and luxury sample suites firsthand.
             </p>
           </div>
 
           {/* Connected Timeline Journey */}
-          <div className="relative pl-6 space-y-7 border-l-2 border-black/10 dark:border-white/10">
+          <div className={`relative pl-6 border-l-2 border-black/10 dark:border-white/10 ${
+            compact ? 'space-y-3' : 'space-y-7'
+          }`}>
             {TIMELINE_STEPS.map((step) => (
               <div
                 key={step.step}
@@ -138,7 +150,9 @@ export default function ScheduleSiteVisit({
         {/* RIGHT PANEL (65% - 7 COLS) — Standardized Booking Card */}
         <div
           ref={cardRef}
-          className="lg:col-span-7 bg-white dark:bg-[#121212] border border-black/10 dark:border-white/10 rounded-lg p-6 sm:p-10 shadow-2xl relative transition-all duration-500 my-2 md:my-4"
+          className={`lg:col-span-7 bg-white dark:bg-[#121212] border border-black/10 dark:border-white/10 rounded-lg shadow-2xl relative transition-all duration-500 ${
+            compact ? 'p-4 sm:p-5 my-0' : 'p-6 sm:p-10 my-2 md:my-4'
+          }`}
         >
           <BookingForm
             type="site-visit"
@@ -147,6 +161,7 @@ export default function ScheduleSiteVisit({
             projectName={projectName}
             autoFilled={!!projectName}
             sourcePage="Schedule Site Visit Section"
+            compact={compact}
           />
         </div>
       </div>

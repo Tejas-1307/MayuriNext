@@ -75,6 +75,7 @@ export default function FloatingConversionBar() {
               title="Book Site Visit"
               subtitle="Schedule an exclusive guided walkthrough of your future home."
               sourcePage="Floating CTA Modal"
+              compact
               onSuccess={() => {
                 setTimeout(() => setIsModalOpen(false), 3000);
               }}
