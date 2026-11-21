@@ -141,7 +141,7 @@ export async function sendDualEmails(payload: LeadSubmissionPayload): Promise<{ 
   const adminEmailHtml = generateAdminEmailHtml(payload);
 
   const fromEmail = process.env.DEFAULT_FROM_EMAIL || process.env.SMTP_FROM || 'tsalunkhe204@gmail.com';
-  const adminEmail = process.env.ADMIN_EMAIL || 'crohitpote17@gmail.com';
+  const adminEmail = process.env.ADMIN_EMAIL || 'mayurilandmarks.sales@gmail.com';
 
   const isVisit = payload.form_type === 'site-visit';
   const adminSubject = isVisit ? 'New Site Visit Request' : 'New Property Enquiry';
@@ -151,7 +151,7 @@ export async function sendDualEmails(payload: LeadSubmissionPayload): Promise<{ 
 
   if (!user || !pass) {
     console.warn('[EMAIL SERVICE - FALLBACK LOGGER MODE] Missing SMTP environment variables.');
-    return { success: true, adminSent: false, customerSent: false, logOnly: true };
+    return { success: false, adminSent: false, customerSent: false, logOnly: true };
   }
 
   let attempt = 0;
@@ -188,6 +188,6 @@ export async function sendDualEmails(payload: LeadSubmissionPayload): Promise<{ 
     }
   }
 
-  // If retries fail, return success: true so lead storage is preserved and user workflow isn't broken
-  return { success: true, adminSent: false, customerSent: false, logOnly: true };
+  // Lead storage is preserved by the API, but email delivery is reported accurately.
+  return { success: false, adminSent: false, customerSent: false, logOnly: true };
 }

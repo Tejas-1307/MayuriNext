@@ -137,6 +137,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       success: true,
       leadId: leadRecord.id,
+      emailSent: emailRes.adminSent,
+      emailDelivery: emailRes.adminSent ? 'sent' : 'failed',
       message: 'Thank you. Our relationship manager will contact you shortly to confirm your booking.',
     });
   } catch (error: any) {
